@@ -54,7 +54,8 @@ label {
     color: #333;
 }
 
-input, textarea {
+input,
+textarea {
     width: 100%;
     padding: 10px;
     border: 2px solid #ddd;
@@ -63,7 +64,8 @@ input, textarea {
     font-family: Arial, sans-serif;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     border-color: #3498db;
     outline: none;
 }
@@ -147,22 +149,23 @@ button:disabled {
     color: #2c3e50;
 }
 
-/* CONTAINER DO PDF - IMPORTANTE PARA CAPTURA */
-#conteudo-pdf {
+/* CONTAINER DO PDF */
+.pdf-container {
     background: white;
-    padding: 20px;
+    padding: 0;
     border-radius: 5px;
 }
 
 .curriculo {
     position: relative;
     background: white;
-    padding: 30px;
+    padding: 40px;
     border: 2px solid #ddd;
     border-radius: 5px;
     min-height: 200px;
-    line-height: 1.6;
+    line-height: 1.8;
     overflow: hidden;
+    max-width: 100%;
 }
 
 /* MARCA D'ÁGUA */
@@ -259,44 +262,73 @@ footer {
 }
 
 /* ========================================
-   ESTILO PARA IMPRESSÃO
+   ESTILO PARA IMPRESSÃO E PDF
    ======================================== */
 @media print {
     body {
         background: white !important;
         padding: 0 !important;
+        margin: 0 !important;
     }
-    
+
     .container {
         box-shadow: none !important;
-        padding: 10px !important;
+        padding: 0 !important;
         border-radius: 0 !important;
+        max-width: 100% !important;
+        background: white !important;
     }
-    
-    .formulario, .botoes, .btn-pdf, .btn-imprimir, #area-curriculo h2 {
+
+    .formulario,
+    .botoes,
+    .btn-pdf,
+    .btn-imprimir,
+    #area-curriculo h2,
+    .subtitulo,
+    h1 {
         display: none !important;
     }
-    
+
     #area-curriculo {
         border: none !important;
         padding: 0 !important;
         margin: 0 !important;
         display: block !important;
     }
-    
-    #conteudo-pdf {
+
+    .pdf-container {
         padding: 0 !important;
         border: none !important;
+        margin: 0 !important;
     }
-    
+
     .curriculo {
         border: none !important;
-        padding: 15px !important;
+        padding: 20px !important;
         box-shadow: none !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        min-height: auto !important;
+        max-width: 100% !important;
     }
-    
+
     .curriculo::after {
         color: rgba(52, 152, 219, 0.5) !important;
         font-size: 14px !important;
+        bottom: 10px !important;
+        right: 15px !important;
+    }
+
+    .curriculo .secao {
+        page-break-inside: avoid;
+    }
+
+    .curriculo .foto img {
+        max-width: 120px !important;
+        max-height: 120px !important;
+    }
+
+    footer {
+        display: none !important;
     }
 }
