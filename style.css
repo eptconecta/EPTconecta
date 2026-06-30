@@ -60,6 +60,7 @@ input, textarea {
     border: 2px solid #ddd;
     border-radius: 5px;
     font-size: 14px;
+    font-family: Arial, sans-serif;
 }
 
 input:focus, textarea:focus {
@@ -90,12 +91,17 @@ button {
     transition: 0.3s;
 }
 
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .btn-gerar {
     background: #3498db;
     color: white;
 }
 
-.btn-gerar:hover {
+.btn-gerar:hover:not(:disabled) {
     background: #2980b9;
 }
 
@@ -104,7 +110,7 @@ button {
     color: white;
 }
 
-.btn-limpar:hover {
+.btn-limpar:hover:not(:disabled) {
     background: #c0392b;
 }
 
@@ -113,7 +119,7 @@ button {
     color: white;
 }
 
-.btn-pdf:hover {
+.btn-pdf:hover:not(:disabled) {
     background: #27ae60;
 }
 
@@ -122,11 +128,13 @@ button {
     color: white;
 }
 
-.btn-imprimir:hover {
+.btn-imprimir:hover:not(:disabled) {
     background: #e67e22;
 }
 
-/* CURRÍCULO GERADO */
+/* ========================================
+   CURRÍCULO COM MARCA D'ÁGUA
+   ======================================== */
 #area-curriculo {
     margin-top: 30px;
     border-top: 3px solid #3498db;
@@ -139,15 +147,35 @@ button {
     color: #2c3e50;
 }
 
+/* CONTAINER DO CURRÍCULO COM POSIÇÃO RELATIVA PARA A MARCA D'ÁGUA */
 .curriculo {
+    position: relative;
     background: white;
     padding: 30px;
     border: 2px solid #ddd;
     border-radius: 5px;
     min-height: 200px;
     line-height: 1.6;
+    overflow: hidden;
 }
 
+/* MARCA D'ÁGUA */
+.curriculo::after {
+    content: "Gerado por EPT Conecta";
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    font-size: 12px;
+    color: rgba(52, 152, 219, 0.3);
+    font-weight: bold;
+    letter-spacing: 1px;
+    transform: rotate(-3deg);
+    pointer-events: none;
+    font-family: Arial, sans-serif;
+    z-index: 1;
+}
+
+/* ESTILOS DO CONTEÚDO DO CURRÍCULO */
 .curriculo h1 {
     font-size: 28px;
     color: #2c3e50;
@@ -159,6 +187,8 @@ button {
     text-align: center;
     color: #555;
     margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
 }
 
 .curriculo .foto {
@@ -189,6 +219,8 @@ button {
 .curriculo .secao p {
     margin-bottom: 5px;
     color: #333;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 .curriculo .habilidades {
@@ -205,14 +237,63 @@ button {
     font-size: 13px;
 }
 
+.curriculo .sobre-mim {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 4px solid #3498db;
+}
+
+/* RODAPÉ */
 footer {
     text-align: center;
     margin-top: 30px;
     padding-top: 20px;
     border-top: 2px solid #eee;
-    color: #e74c3c;
+    color: #999;
+    font-size: 12px;
 }
 
-footer strong {
-    color: #2c3e50;
+/* ========================================
+   ESTILO PARA IMPRESSÃO
+   ======================================== */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+    
+    .container {
+        box-shadow: none;
+        padding: 20px;
+    }
+    
+    .formulario, .botoes, .btn-pdf, .btn-imprimir, #area-curriculo h2 {
+        display: none !important;
+    }
+    
+    #area-curriculo {
+        border: none;
+        padding: 0;
+        margin: 0;
+        display: block !important;
+    }
+    
+    .curriculo {
+        border: none;
+        padding: 20px;
+        box-shadow: none;
+    }
+    
+    /* MARCA D'ÁGUA FICA MAIS FORTE NA IMPRESSÃO */
+    .curriculo::after {
+        color: rgba(52, 152, 219, 0.5);
+        font-size: 14px;
+        bottom: 10px;
+        right: 15px;
+    }
+    
+    footer {
+        display: none !important;
+    }
 }
