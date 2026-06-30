@@ -20,7 +20,6 @@ document.getElementById('foto').addEventListener('change', function(e) {
 // FUNÇÃO PRINCIPAL - GERAR CURRÍCULO
 // ========================================
 function gerarCurriculo() {
-    // 1. PEGAR OS DADOS
     const nome = document.getElementById('nome').value.trim();
     const idade = document.getElementById('idade').value.trim();
     const cidade = document.getElementById('cidade').value.trim();
@@ -33,13 +32,11 @@ function gerarCurriculo() {
     const formacao = document.getElementById('formacao').value.trim();
     const hobbies = document.getElementById('hobbies').value.trim();
     
-    // 2. VALIDAR CAMPOS OBRIGATÓRIOS
     if (!nome || !idade || !cidade || !email || !telefone) {
         alert('⚠️ Por favor, preencha os campos obrigatórios: Nome, Idade, Cidade, E-mail e Telefone');
         return;
     }
     
-    // 3. MONTAR O HTML DO CURRÍCULO
     let html = `
         <div class="foto">
             ${fotoBase64 ? `<img src="${fotoBase64}" alt="Foto de ${nome}">` : ''}
@@ -55,7 +52,6 @@ function gerarCurriculo() {
         </div>
     `;
     
-    // SOBRE MIM
     if (sobre) {
         html += `
             <div class="secao">
@@ -67,7 +63,6 @@ function gerarCurriculo() {
         `;
     }
     
-    // Objetivo
     if (objetivo) {
         html += `
             <div class="secao">
@@ -77,7 +72,6 @@ function gerarCurriculo() {
         `;
     }
     
-    // Habilidades
     if (habilidades) {
         const listaHabilidades = habilidades.split(',').map(h => h.trim()).filter(h => h);
         html += `
@@ -90,7 +84,6 @@ function gerarCurriculo() {
         `;
     }
     
-    // Experiência
     if (experiencia) {
         html += `
             <div class="secao">
@@ -100,7 +93,6 @@ function gerarCurriculo() {
         `;
     }
     
-    // Formação
     if (formacao) {
         html += `
             <div class="secao">
@@ -110,7 +102,6 @@ function gerarCurriculo() {
         `;
     }
     
-    // Hobbies
     if (hobbies) {
         html += `
             <div class="secao">
@@ -120,11 +111,8 @@ function gerarCurriculo() {
         `;
     }
     
-    // 4. INSERIR NO HTML
     document.getElementById('previa-curriculo').innerHTML = html;
     document.getElementById('area-curriculo').style.display = 'block';
-    
-    // Scroll para o currículo
     document.getElementById('area-curriculo').scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -144,12 +132,13 @@ function limparCampos() {
 }
 
 // ========================================
-// FUNÇÃO PARA BAIXAR PDF
+// FUNÇÃO PARA BAIXAR PDF - CORRIGIDA!
 // ========================================
 function baixarPDF() {
-    const element = document.getElementById('previa-curriculo');
+    // PEGA O CONTEÚDO COMPLETO (COM O CONTAINER)
+    const element = document.getElementById('conteudo-pdf');
     
-    if (!element.innerHTML.trim()) {
+    if (!element.innerHTML.trim() || !document.getElementById('previa-curriculo').innerHTML.trim()) {
         alert('⚠️ Gere o currículo primeiro antes de baixar o PDF!');
         return;
     }
@@ -159,35 +148,39 @@ function baixarPDF() {
     btn.textContent = '⏳ Gerando PDF...';
     btn.disabled = true;
     
+    // CONFIGURAÇÕES MELHORADAS
     const opt = {
-        margin: [10, 10, 10, 10],
+        margin: [15, 15, 15, 15],
         filename: `curriculo-${document.getElementById('nome').value.trim() || 'ept-conecta'}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { 
             scale: 2,
             useCORS: true,
             allowTaint: true,
-            logging: false
+            logging: false,
+            width: element.scrollWidth,
+            height: element.scrollHeight,
+            windowWidth: element.scrollWidth
         },
         jsPDF: { 
             unit: 'mm', 
             format: 'a4', 
             orientation: 'portrait' 
-        },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+        }
     };
     
+    // GERAR PDF
     html2pdf()
-        .set(opt)
         .from(element)
+        .set(opt)
         .save()
         .then(function() {
             btn.textContent = textoOriginal;
             btn.disabled = false;
         })
         .catch(function(error) {
-            console.error('Erro ao gerar PDF:', error);
-            alert('❌ Erro ao gerar PDF. Tente novamente ou use a opção de imprimir.');
+            console.error('Erro detalhado:', error);
+            alert('❌ Erro ao gerar PDF. Tente usar a opção "IMPRIMIR" e salvar como PDF.');
             btn.textContent = textoOriginal;
             btn.disabled = false;
         });
@@ -207,8 +200,5 @@ function imprimir() {
     window.print();
 }
 
-// ========================================
-// MENSAGEM DE BOAS-VINDAS
-// ========================================
 console.log('📄 EPT Conecta - Gerador de Currículo');
 console.log('Seus dados não são salvos');
