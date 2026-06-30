@@ -31,12 +31,12 @@ function gerarCurriculo() {
     const experiencia = document.getElementById('experiencia').value.trim();
     const formacao = document.getElementById('formacao').value.trim();
     const hobbies = document.getElementById('hobbies').value.trim();
-    
+
     if (!nome || !idade || !cidade || !email || !telefone) {
         alert('⚠️ Por favor, preencha os campos obrigatórios: Nome, Idade, Cidade, E-mail e Telefone');
         return;
     }
-    
+
     let html = `
         <div class="foto">
             ${fotoBase64 ? `<img src="${fotoBase64}" alt="Foto de ${nome}">` : ''}
@@ -51,7 +51,7 @@ function gerarCurriculo() {
             <p><strong>Telefone:</strong> ${telefone}</p>
         </div>
     `;
-    
+
     if (sobre) {
         html += `
             <div class="secao">
@@ -62,7 +62,7 @@ function gerarCurriculo() {
             </div>
         `;
     }
-    
+
     if (objetivo) {
         html += `
             <div class="secao">
@@ -71,7 +71,7 @@ function gerarCurriculo() {
             </div>
         `;
     }
-    
+
     if (habilidades) {
         const listaHabilidades = habilidades.split(',').map(h => h.trim()).filter(h => h);
         html += `
@@ -83,7 +83,7 @@ function gerarCurriculo() {
             </div>
         `;
     }
-    
+
     if (experiencia) {
         html += `
             <div class="secao">
@@ -92,7 +92,7 @@ function gerarCurriculo() {
             </div>
         `;
     }
-    
+
     if (formacao) {
         html += `
             <div class="secao">
@@ -101,7 +101,7 @@ function gerarCurriculo() {
             </div>
         `;
     }
-    
+
     if (hobbies) {
         html += `
             <div class="secao">
@@ -110,7 +110,7 @@ function gerarCurriculo() {
             </div>
         `;
     }
-    
+
     document.getElementById('previa-curriculo').innerHTML = html;
     document.getElementById('area-curriculo').style.display = 'block';
     document.getElementById('area-curriculo').scrollIntoView({ behavior: 'smooth' });
@@ -132,58 +132,29 @@ function limparCampos() {
 }
 
 // ========================================
-// FUNÇÃO PARA BAIXAR PDF - CORRIGIDA!
+// FUNÇÃO PARA BAIXAR PDF - USANDO IMPRESSÃO!
 // ========================================
 function baixarPDF() {
-    // PEGA O CONTEÚDO COMPLETO (COM O CONTAINER)
-    const element = document.getElementById('conteudo-pdf');
-    
-    if (!element.innerHTML.trim() || !document.getElementById('previa-curriculo').innerHTML.trim()) {
+    const element = document.getElementById('previa-curriculo');
+
+    if (!element.innerHTML.trim()) {
         alert('⚠️ Gere o currículo primeiro antes de baixar o PDF!');
         return;
     }
-    
+
+    // Abrir a janela de impressão com "Salvar como PDF" já selecionado
     const btn = document.querySelector('.btn-pdf');
     const textoOriginal = btn.textContent;
-    btn.textContent = '⏳ Gerando PDF...';
+    btn.textContent = '⏳ Preparando PDF...';
     btn.disabled = true;
-    
-    // CONFIGURAÇÕES MELHORADAS
-    const opt = {
-        margin: [15, 15, 15, 15],
-        filename: `curriculo-${document.getElementById('nome').value.trim() || 'ept-conecta'}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { 
-            scale: 2,
-            useCORS: true,
-            allowTaint: true,
-            logging: false,
-            width: element.scrollWidth,
-            height: element.scrollHeight,
-            windowWidth: element.scrollWidth
-        },
-        jsPDF: { 
-            unit: 'mm', 
-            format: 'a4', 
-            orientation: 'portrait' 
-        }
-    };
-    
-    // GERAR PDF
-    html2pdf()
-        .from(element)
-        .set(opt)
-        .save()
-        .then(function() {
-            btn.textContent = textoOriginal;
-            btn.disabled = false;
-        })
-        .catch(function(error) {
-            console.error('Erro detalhado:', error);
-            alert('❌ Erro ao gerar PDF. Tente usar a opção "IMPRIMIR" e salvar como PDF.');
-            btn.textContent = textoOriginal;
-            btn.disabled = false;
-        });
+
+    // Pequeno delay para mostrar o loading
+    setTimeout(() => {
+        // Usar a função de impressão que já funciona perfeitamente
+        window.print();
+        btn.textContent = textoOriginal;
+        btn.disabled = false;
+    }, 500);
 }
 
 // ========================================
@@ -191,12 +162,12 @@ function baixarPDF() {
 // ========================================
 function imprimir() {
     const element = document.getElementById('previa-curriculo');
-    
+
     if (!element.innerHTML.trim()) {
         alert('⚠️ Gere o currículo primeiro antes de imprimir!');
         return;
     }
-    
+
     window.print();
 }
 
