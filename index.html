@@ -46,7 +46,7 @@
             
             <div class="campo">
                 <label>💬 Sobre Mim</label>
-                <textarea id="sobre" rows="4" placeholder="Fale um pouco sobre você, suas qualidades, perfil profissional, etc..."></textarea>
+                <textarea id="sobre" rows="4" placeholder="Fale um pouco sobre você..."></textarea>
             </div>
             
             <div class="campo">
@@ -83,7 +83,10 @@
         <!-- PRÉVIA DO CURRÍCULO -->
         <div id="area-curriculo" style="display: none;">
             <h2>📋 Seu Currículo</h2>
-            <div id="previa-curriculo" class="curriculo"></div>
+            <!-- Container específico para o PDF -->
+            <div id="conteudo-pdf">
+                <div id="previa-curriculo" class="curriculo"></div>
+            </div>
             
             <div class="botoes">
                 <button onclick="baixarPDF()" class="btn-pdf">💾 BAIXAR PDF</button>
@@ -91,14 +94,13 @@
             </div>
         </div>
         
-        <!-- RODAPÉ SEM A MENSAGEM "FEITO COM ❤️" -->
-        <footer>
-            <!-- Rodapé vazio ou só com informações úteis -->
-        </footer>
+        <footer></footer>
     </div>
     
-    <!-- BIBLIOTECAS PARA PDF -->
+    <!-- BIBLIOTECAS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
     </script>
     
     <script src="script.js"></script>
