@@ -133,7 +133,7 @@ button:disabled {
 }
 
 /* ========================================
-   CURRÍCULO COM MARCA D'ÁGUA
+   CURRÍCULO
    ======================================== */
 #area-curriculo {
     margin-top: 30px;
@@ -147,7 +147,13 @@ button:disabled {
     color: #2c3e50;
 }
 
-/* CONTAINER DO CURRÍCULO COM POSIÇÃO RELATIVA PARA A MARCA D'ÁGUA */
+/* CONTAINER DO PDF - IMPORTANTE PARA CAPTURA */
+#conteudo-pdf {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
 .curriculo {
     position: relative;
     background: white;
@@ -175,7 +181,6 @@ button:disabled {
     z-index: 1;
 }
 
-/* ESTILOS DO CONTEÚDO DO CURRÍCULO */
 .curriculo h1 {
     font-size: 28px;
     color: #2c3e50;
@@ -244,7 +249,6 @@ button:disabled {
     border-left: 4px solid #3498db;
 }
 
-/* RODAPÉ */
 footer {
     text-align: center;
     margin-top: 30px;
@@ -259,13 +263,14 @@ footer {
    ======================================== */
 @media print {
     body {
-        background: white;
-        padding: 0;
+        background: white !important;
+        padding: 0 !important;
     }
     
     .container {
-        box-shadow: none;
-        padding: 20px;
+        box-shadow: none !important;
+        padding: 10px !important;
+        border-radius: 0 !important;
     }
     
     .formulario, .botoes, .btn-pdf, .btn-imprimir, #area-curriculo h2 {
@@ -273,27 +278,25 @@ footer {
     }
     
     #area-curriculo {
-        border: none;
-        padding: 0;
-        margin: 0;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
         display: block !important;
     }
     
+    #conteudo-pdf {
+        padding: 0 !important;
+        border: none !important;
+    }
+    
     .curriculo {
-        border: none;
-        padding: 20px;
-        box-shadow: none;
+        border: none !important;
+        padding: 15px !important;
+        box-shadow: none !important;
     }
     
-    /* MARCA D'ÁGUA FICA MAIS FORTE NA IMPRESSÃO */
     .curriculo::after {
-        color: rgba(52, 152, 219, 0.5);
-        font-size: 14px;
-        bottom: 10px;
-        right: 15px;
-    }
-    
-    footer {
-        display: none !important;
+        color: rgba(52, 152, 219, 0.5) !important;
+        font-size: 14px !important;
     }
 }
