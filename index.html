@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPT Conecta - Gerador de Currículo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📄 EPT Conecta</h1>
+        <p class="subtitulo">Preencha os dados e gere seu currículo profissional</p>
+        
+        <!-- FORMULÁRIO -->
+        <div class="formulario">
+            <div class="campo">
+                <label>📸 Foto (opcional)</label>
+                <input type="file" id="foto" accept="image/*">
+            </div>
+            
+            <div class="campo">
+                <label>👤 Nome Completo *</label>
+                <input type="text" id="nome" placeholder="Ex: João Silva Santos">
+            </div>
+            
+            <div class="campo-linha">
+                <div class="campo">
+                    <label>📅 Idade *</label>
+                    <input type="number" id="idade" placeholder="25">
+                </div>
+                <div class="campo">
+                    <label>📍 Cidade/UF *</label>
+                    <input type="text" id="cidade" placeholder="São Paulo - SP">
+                </div>
+            </div>
+            
+            <div class="campo">
+                <label>📧 E-mail *</label>
+                <input type="email" id="email" placeholder="joao@email.com">
+            </div>
+            
+            <div class="campo">
+                <label>📱 Telefone *</label>
+                <input type="tel" id="telefone" placeholder="(11) 99999-9999">
+            </div>
+            
+            <div class="campo">
+                <label>🎯 Objetivo Profissional</label>
+                <input type="text" id="objetivo" placeholder="Ex: Desenvolvedor Front-end">
+            </div>
+            
+            <div class="campo">
+                <label>🛠️ Habilidades (separadas por vírgula)</label>
+                <input type="text" id="habilidades" placeholder="HTML, CSS, JavaScript, React">
+            </div>
+            
+            <div class="campo">
+                <label>💼 Experiência Profissional</label>
+                <textarea id="experiencia" rows="3" placeholder="Ex: Empresa X - 2020 a 2023 - Desenvolvedor..."></textarea>
+            </div>
+            
+            <div class="campo">
+                <label>🎓 Formação Acadêmica</label>
+                <textarea id="formacao" rows="2" placeholder="Ex: Bacharel em Ciência da Computação - USP (2016-2020)"></textarea>
+            </div>
+            
+            <div class="campo">
+                <label>🌟 Hobbies/Interesses</label>
+                <input type="text" id="hobbies" placeholder="Leitura, Música, Esportes">
+            </div>
+            
+            <div class="botoes">
+                <button onclick="gerarCurriculo()" class="btn-gerar">📄 GERAR CURRÍCULO</button>
+                <button onclick="limparCampos()" class="btn-limpar">🗑️ LIMPAR</button>
+            </div>
+        </div>
+        
+        <!-- PRÉVIA DO CURRÍCULO -->
+        <div id="area-curriculo" style="display: none;">
+            <h2>📋 Seu Currículo</h2>
+            <div id="previa-curriculo" class="curriculo"></div>
+            
+            <div class="botoes">
+                <button onclick="baixarPDF()" class="btn-pdf">💾 BAIXAR PDF</button>
+                <button onclick="imprimir()" class="btn-imprimir">🖨️ IMPRIMIR</button>
+            </div>
+        </div>
+        
+        <footer>
+            Feito com ❤️ por <strong>EPT Conecta</strong> • Seus dados não são salvos
+        </footer>
+    </div>
+    
+    <!-- BIBLIOTECAS PARA PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js">
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
