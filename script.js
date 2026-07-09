@@ -50,6 +50,7 @@ function gerarCurriculo() {
 
     // ========================================
     // MONTAR O HTML DO CURRÍCULO
+    // TODAS AS SEÇÕES APARECEM MESMO VAZIAS!
     // ========================================
     let html = `
         <div class="foto">
@@ -65,96 +66,90 @@ function gerarCurriculo() {
         </div>
     `;
 
-    // OBJETIVO
-    if (objetivo) {
-        html += `
-            <div class="secao">
-                <h2>Objetivo</h2>
-                <p>${objetivo}</p>
-            </div>
-        `;
-    }
+    // ========================================
+    // TODAS AS SEÇÕES COM TÍTULO FIXO
+    // ========================================
 
-    // SOBRE MIM
-    if (sobre) {
-        html += `
-            <div class="secao">
-                <h2>Sobre Mim</h2>
-                <div class="sobre-mim">
-                    <p>${sobre}</p>
-                </div>
-            </div>
-        `;
-    }
+    // OBJETIVO - SEMPRE APARECE
+    html += `
+        <div class="secao">
+            <h2>🎯 Objetivo</h2>
+            <p>${objetivo || 'Não informado'}</p>
+        </div>
+    `;
 
-    // FORMAÇÃO ACADÊMICA
-    if (formacao) {
-        html += `
-            <div class="secao">
-                <h2>Formação Acadêmica</h2>
-                <p>${formacao}</p>
+    // SOBRE MIM - SEMPRE APARECE
+    html += `
+        <div class="secao">
+            <h2>💬 Sobre Mim</h2>
+            <div class="sobre-mim">
+                <p>${sobre || 'Não informado'}</p>
             </div>
-        `;
-    }
+        </div>
+    `;
 
-    // EXPERIÊNCIA PROFISSIONAL
-    if (experiencia) {
-        html += `
-            <div class="secao">
-                <h2>Experiência Profissional</h2>
-                <p>${experiencia}</p>
-            </div>
-        `;
-    }
+    // FORMAÇÃO ACADÊMICA - SEMPRE APARECE
+    html += `
+        <div class="secao">
+            <h2>🎓 Formação Acadêmica</h2>
+            <p>${formacao || 'Não informado'}</p>
+        </div>
+    `;
 
-    // HABILIDADES
-    if (habilidades) {
-        const listaHabilidades = habilidades.split(',').map(h => h.trim()).filter(h => h);
-        html += `
-            <div class="secao">
-                <h2>Habilidades</h2>
-                <div class="habilidades">
-                    ${listaHabilidades.map(h => `<span>${h}</span>`).join('')}
-                </div>
-            </div>
-        `;
-    }
+    // EXPERIÊNCIA PROFISSIONAL - SEMPRE APARECE
+    html += `
+        <div class="secao">
+            <h2>💼 Experiência Profissional</h2>
+            <p>${experiencia || 'Não informado'}</p>
+        </div>
+    `;
 
-    // CURSOS COMPLEMENTARES
-    if (cursos) {
-        const listaCursos = cursos.split('\n').filter(c => c.trim());
-        html += `
-            <div class="secao">
-                <h2>Cursos Complementares</h2>
-                <ul class="cursos-lista">
-                    ${listaCursos.map(c => `<li>${c.trim()}</li>`).join('')}
-                </ul>
+    // HABILIDADES - SEMPRE APARECE
+    const listaHabilidades = habilidades ? habilidades.split(',').map(h => h.trim()).filter(h => h) : [];
+    html += `
+        <div class="secao">
+            <h2>🛠️ Habilidades</h2>
+            <div class="habilidades">
+                ${listaHabilidades.length > 0 
+                    ? listaHabilidades.map(h => `<span>${h}</span>`).join('') 
+                    : '<span style="background:#e5e7eb;color:#666;">Nenhuma habilidade informada</span>'}
             </div>
-        `;
-    }
+        </div>
+    `;
 
-    // HOBBIES
-    if (hobbies) {
-        html += `
-            <div class="secao">
-                <h2>Hobbies e Interesses</h2>
-                <p>${hobbies}</p>
-            </div>
-        `;
-    }
+    // CURSOS COMPLEMENTARES - SEMPRE APARECE
+    const listaCursos = cursos ? cursos.split('\n').filter(c => c.trim()) : [];
+    html += `
+        <div class="secao">
+            <h2>📚 Cursos Complementares</h2>
+            <ul class="cursos-lista">
+                ${listaCursos.length > 0 
+                    ? listaCursos.map(c => `<li>${c.trim()}</li>`).join('') 
+                    : '<li style="color:#999;">Nenhum curso informado</li>'}
+            </ul>
+        </div>
+    `;
 
-    // INFORMAÇÕES COMPLEMENTARES
-    if (infoComplementar) {
-        const listaInfo = infoComplementar.split('\n').filter(i => i.trim());
-        html += `
-            <div class="secao">
-                <h2>Informações Complementares</h2>
-                <div class="info-lista">
-                    ${listaInfo.map(i => `<span>${i.trim()}</span>`).join('')}
-                </div>
+    // HOBBIES - SEMPRE APARECE
+    html += `
+        <div class="secao">
+            <h2>🌟 Hobbies e Interesses</h2>
+            <p>${hobbies || 'Não informado'}</p>
+        </div>
+    `;
+
+    // INFORMAÇÕES COMPLEMENTARES - SEMPRE APARECE
+    const listaInfo = infoComplementar ? infoComplementar.split('\n').filter(i => i.trim()) : [];
+    html += `
+        <div class="secao">
+            <h2>📌 Informações Complementares</h2>
+            <div class="info-lista">
+                ${listaInfo.length > 0 
+                    ? listaInfo.map(i => `<span>${i.trim()}</span>`).join('') 
+                    : '<span style="color:#999;">Nenhuma informação complementar</span>'}
             </div>
-        `;
-    }
+        </div>
+    `;
 
     // INSERIR NO HTML
     document.getElementById('previa-curriculo').innerHTML = html;
