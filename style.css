@@ -31,9 +31,7 @@ body::before {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ========================================
-   HEADER COM LOGO E.P.T CONECTA - ROXO CHAMATIVO
-   ======================================== */
+/* HEADER */
 .header {
     background: linear-gradient(135deg, #1a0a2e 0%, #4c1d6e 30%, #6C1B8C 55%, #8B2FC9 75%, #A855F7 100%);
     padding: 35px 30px 20px;
@@ -86,9 +84,7 @@ body::before {
     text-align: center;
 }
 
-/* ========================================
-   LOGO E.P.T CONECTA - COM EFEITO GLOW
-   ======================================== */
+/* LOGO */
 .logo {
     display: flex;
     align-items: center;
@@ -161,9 +157,7 @@ body::before {
     50% { background-position: 100% 50%; }
 }
 
-/* ========================================
-   CONTAINER PRINCIPAL
-   ======================================== */
+/* CONTAINER */
 .container {
     max-width: 950px;
     margin: 0 auto;
@@ -177,9 +171,7 @@ body::before {
     z-index: 1;
 }
 
-/* ========================================
-   FORMULÁRIO
-   ======================================== */
+/* FORMULÁRIO */
 .formulario {
     margin-bottom: 35px;
 }
@@ -271,9 +263,7 @@ textarea {
     min-height: 60px;
 }
 
-/* ========================================
-   BOTÕES COM ANIMAÇÕES ESPETACULARES
-   ======================================== */
+/* BOTÕES */
 .botoes {
     display: flex;
     gap: 15px;
@@ -317,7 +307,6 @@ button:hover:not(:disabled) .btn-icon {
     transform: scale(1.3) rotate(10deg);
 }
 
-/* Botão Gerar - ROXO COM EFEITO */
 .btn-gerar {
     background: linear-gradient(135deg, #6C1B8C, #8B2FC9, #A855F7);
     color: white;
@@ -349,7 +338,6 @@ button:hover:not(:disabled) .btn-icon {
     transform: scale(0.95);
 }
 
-/* Botão Limpar */
 .btn-limpar {
     background: linear-gradient(135deg, #dc2626, #b91c1c);
     color: white;
@@ -365,7 +353,6 @@ button:hover:not(:disabled) .btn-icon {
     transform: scale(0.95);
 }
 
-/* Botão PDF */
 .btn-pdf {
     background: linear-gradient(135deg, #16a34a, #15803d);
     color: white;
@@ -381,7 +368,6 @@ button:hover:not(:disabled) .btn-icon {
     transform: scale(0.95);
 }
 
-/* Botão Imprimir */
 .btn-imprimir {
     background: linear-gradient(135deg, #ea580c, #c2410c);
     color: white;
@@ -397,9 +383,7 @@ button:hover:not(:disabled) .btn-icon {
     transform: scale(0.95);
 }
 
-/* ========================================
-   ÁREA DO CURRÍCULO - PRÉVIA BONITA
-   ======================================== */
+/* ÁREA DO CURRÍCULO */
 #area-curriculo {
     margin-top: 35px;
     border-top: 3px solid #A855F7;
@@ -445,9 +429,7 @@ button:hover:not(:disabled) .btn-icon {
     border-radius: 5px;
 }
 
-/* ========================================
-   CURRÍCULO - ESTILO ROXO CHAMATIVO
-   ======================================== */
+/* CURRÍCULO */
 .curriculo {
     position: relative;
     background: white;
@@ -489,7 +471,6 @@ button:hover:not(:disabled) .btn-icon {
     z-index: 1;
 }
 
-/* NOME EM DESTAQUE */
 .curriculo .nome-principal {
     font-size: 36px;
     font-weight: 900;
@@ -501,7 +482,6 @@ button:hover:not(:disabled) .btn-icon {
     letter-spacing: 1.5px;
 }
 
-/* CONTATO */
 .curriculo .contato-grid {
     display: flex;
     justify-content: center;
@@ -521,7 +501,6 @@ button:hover:not(:disabled) .btn-icon {
     font-weight: 500;
 }
 
-/* SEÇÕES */
 .curriculo .secao {
     margin-bottom: 20px;
 }
@@ -576,7 +555,6 @@ button:hover:not(:disabled) .btn-icon {
     font-weight: bold;
 }
 
-/* HABILIDADES */
 .curriculo .habilidades {
     display: flex;
     flex-wrap: wrap;
@@ -600,7 +578,6 @@ button:hover:not(:disabled) .btn-icon {
     transform: scale(1.08);
 }
 
-/* SOBRE MIM */
 .curriculo .sobre-mim {
     background: linear-gradient(135deg, #faf8ff, #f3e8ff);
     padding: 14px 20px;
@@ -613,7 +590,6 @@ button:hover:not(:disabled) .btn-icon {
     font-size: 13.5px;
 }
 
-/* FOTO */
 .curriculo .foto {
     text-align: center;
     margin-bottom: 18px;
@@ -633,7 +609,6 @@ button:hover:not(:disabled) .btn-icon {
     transform: scale(1.05) rotate(3deg);
 }
 
-/* INFO COMPLEMENTAR */
 .curriculo .info-lista {
     display: flex;
     flex-wrap: wrap;
@@ -655,7 +630,6 @@ button:hover:not(:disabled) .btn-icon {
     font-size: 16px;
 }
 
-/* CURSOS */
 .curriculo .cursos-lista {
     list-style: none;
     padding: 0;
@@ -677,9 +651,6 @@ button:hover:not(:disabled) .btn-icon {
     font-size: 13px;
 }
 
-/* ========================================
-   RODAPÉ
-   ======================================== */
 footer {
     text-align: center;
     margin-top: 30px;
@@ -692,10 +663,9 @@ footer {
 }
 
 /* ========================================
-   ESTILO PARA IMPRESSÃO - CORRIGIDO 100%
+   @MEDIA PRINT - CORRIGIDO DEFINITIVO!
    ======================================== */
 @media print {
-    /* FORÇA TODAS AS CORES E ESTILOS NA IMPRESSÃO */
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
@@ -706,14 +676,12 @@ footer {
         background: white !important;
         padding: 0 !important;
         margin: 0 !important;
-        font-family: 'Poppins', Arial, sans-serif !important;
     }
 
     body::before {
         display: none !important;
     }
 
-    /* ESCONDE TUDO QUE NÃO É O CURRÍCULO */
     .header,
     .formulario,
     .botoes,
@@ -727,50 +695,53 @@ footer {
     }
 
     .container {
-        box-shadow: none !important;
         padding: 0 !important;
-        border-radius: 0 !important;
-        max-width: 100% !important;
-        background: white !important;
         margin: 0 !important;
+        background: white !important;
+        box-shadow: none !important;
+        max-width: 100% !important;
         backdrop-filter: none !important;
+        border-radius: 0 !important;
     }
 
     #area-curriculo {
+        display: block !important;
         border: none !important;
         padding: 0 !important;
         margin: 0 !important;
-        display: block !important;
     }
 
     .pdf-container {
         padding: 0 !important;
-        border: none !important;
         margin: 0 !important;
+        border: none !important;
     }
 
-    /* ========================================
-       CURRÍCULO NA IMPRESSÃO
-       ======================================== */
     .curriculo {
-        border: none !important;
-        padding: 30px 35px !important;
+        border: 2px solid #ede9fe !important;
+        padding: 40px !important;
+        margin: 0 !important;
+        background: white !important;
         box-shadow: none !important;
         border-radius: 0 !important;
-        margin: 0 !important;
-        min-height: auto !important;
-        max-width: 100% !important;
-        background: white !important;
         font-family: 'Poppins', Arial, sans-serif !important;
         line-height: 1.8 !important;
+        max-width: 100% !important;
+        position: relative !important;
+        overflow: hidden !important;
     }
 
-    /* Remove a faixa colorida do topo na impressão */
     .curriculo::before {
-        display: none !important;
+        display: block !important;
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 5px !important;
+        background: linear-gradient(90deg, #6C1B8C, #A855F7, #ec4899, #A855F7, #6C1B8C) !important;
     }
 
-    /* MARCA D'ÁGUA */
     .curriculo::after {
         content: "Gerado por E.P.T Conecta" !important;
         position: absolute !important;
@@ -786,19 +757,18 @@ footer {
         z-index: 1 !important;
     }
 
-    /* NOME */
     .curriculo .nome-principal {
         font-size: 32px !important;
         font-weight: 900 !important;
         color: #4c1d6e !important;
         text-align: center !important;
         margin-bottom: 5px !important;
-        letter-spacing: 1px !important;
         background: none !important;
         -webkit-text-fill-color: #4c1d6e !important;
+        letter-spacing: 1px !important;
+        display: block !important;
     }
 
-    /* CONTATO */
     .curriculo .contato-grid {
         display: flex !important;
         justify-content: center !important;
@@ -808,7 +778,7 @@ footer {
         font-size: 14px !important;
         margin-bottom: 20px !important;
         padding-bottom: 20px !important;
-        border-bottom: 2px solid #A855F7 !important;
+        border-bottom: 3px solid #A855F7 !important;
     }
 
     .curriculo .contato-grid span {
@@ -817,320 +787,30 @@ footer {
         gap: 5px !important;
         color: #555 !important;
         font-size: 14px !important;
+        font-weight: 500 !important;
     }
 
-    /* ========================================
-       SEÇÕES - AGORA VÃO APARECER!
-       ======================================== */
     .curriculo .secao {
+        display: block !important;
         margin-bottom: 18px !important;
         page-break-inside: avoid !important;
-        display: block !important;
     }
 
     .curriculo .secao h2 {
-        color: #4c1d6e !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
         font-size: 16px !important;
         font-weight: 700 !important;
+        color: #4c1d6e !important;
         border-bottom: 2px solid #A855F7 !important;
-        padding-bottom: 4px !important;
+        padding-bottom: 5px !important;
         margin-bottom: 8px !important;
-        display: block !important;
-        letter-spacing: 0.5px !important;
         background: none !important;
         -webkit-text-fill-color: #4c1d6e !important;
+        letter-spacing: 0.5px !important;
     }
 
     .curriculo .secao h2::before {
         content: "▶" !important;
-        color: #A855F7 !important;
-        font-size: 14px !important;
-        margin-right: 8px !important;
-        display: inline-block !important;
-    }
-
-    .curriculo .secao p {
-        margin-bottom: 3px !important;
-        color: #1a0a2e !important;
-        white-space: pre-wrap !important;
-        word-wrap: break-word !important;
-        font-size: 13px !important;
-        line-height: 1.7 !important;
-        display: block !important;
-    }
-
-    /* LISTAS */
-    .curriculo .secao ul {
-        list-style: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        display: block !important;
-    }
-
-    .curriculo .secao ul li {
-        color: #1a0a2e !important;
-        font-size: 13px !important;
-        padding: 2px 0 !important;
-        padding-left: 20px !important;
-        position: relative !important;
-        display: block !important;
-    }
-
-    .curriculo .secao ul li::before {
-        content: "▸" !important;
-        position: absolute !important;
-        left: 0 !important;
-        color: #A855F7 !important;
-        font-weight: bold !important;
-    }
-
-    /* HABILIDADES */
-    .curriculo .habilidades {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        gap: 8px !important;
-        margin-top: 5px !important;
-    }
-
-    .curriculo .habilidades span {
-        background: #6C1B8C !important;
-        color: white !important;
-        padding: 4px 16px !important;
-        border-radius: 20px !important;
-        font-size: 12px !important;
-        font-weight: 500 !important;
-        letter-spacing: 0.3px !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-        box-shadow: none !important;
-        display: inline-block !important;
-    }
-
-    /* SOBRE MIM */
-    .curriculo .sobre-mim {
-        background: #faf8ff !important;
-        padding: 12px 18px !important;
-        border-radius: 10px !important;
-        border-left: 4px solid #A855F7 !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-        display: block !important;
-    }
-
-    .curriculo .sobre-mim p {
-        margin: 0 !important;
-        font-size: 13px !important;
-        color: #1a0a2e !important;
-        display: block !important;
-    }
-
-    /* FOTO */
-    .curriculo .foto {
-        text-align: center !important;
-        margin-bottom: 15px !important;
-        display: block !important;
-    }
-
-    .curriculo .foto img {
-        width: 130px !important;
-        height: 130px !important;
-        border-radius: 50% !important;
-        object-fit: cover !important;
-        border: 4px solid #A855F7 !important;
-        max-width: 130px !important;
-        max-height: 130px !important;
-        box-shadow: none !important;
-        display: inline-block !important;
-    }
-
-    /* INFO COMPLEMENTAR */
-    .curriculo .info-lista {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        gap: 8px 20px !important;
-    }
-
-    .curriculo .info-lista span {
-        font-size: 13px !important;
-        color: #1a0a2e !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        gap: 4px !important;
-    }
-
-    .curriculo .info-lista span::before {
-        content: "✦" !important;
-        color: #A855F7 !important;
-        font-weight: bold !important;
-        font-size: 14px !important;
-        display: inline-block !important;
-    }
-
-    /* CURSOS */
-    .curriculo .cursos-lista {
-        list-style: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        display: block !important;
-    }
-
-    .curriculo .cursos-lista li {
-        color: #1a0a2e !important;
-        font-size: 13px !important;
-        padding: 2px 0 !important;
-        padding-left: 28px !important;
-        position: relative !important;
-        display: block !important;
-    }
-
-    .curriculo .cursos-lista li::before {
-        content: "📚" !important;
-        position: absolute !important;
-        left: 0 !important;
-        font-size: 12px !important;
-    }
-}
-
-/* ========================================
-   RESPONSIVIDADE
-   ======================================== */
-@media (max-width: 768px) {
-    .container {
-        padding: 20px 18px;
-    }
-
-    .header {
-        padding: 25px 18px 16px;
-        border-radius: 18px 18px 0 0;
-    }
-
-    .logo-text {
-        font-size: 28px;
-        letter-spacing: 1.5px;
-    }
-
-    .logo-svg {
-        width: 44px;
-        height: 44px;
-    }
-
-    .campo-linha {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-
-    .botoes {
-        flex-direction: column;
-    }
-
-    button {
-        width: 100%;
-        padding: 14px;
-        font-size: 13px;
-        min-width: auto;
-    }
-
-    .curriculo {
-        padding: 20px 18px;
-    }
-
-    .curriculo .nome-principal {
-        font-size: 26px;
-    }
-
-    .curriculo .contato-grid {
-        flex-direction: column;
-        gap: 6px;
-        align-items: center;
-    }
-
-    .curriculo .contato-grid span {
-        font-size: 12px;
-    }
-
-    .curriculo .habilidades span {
-        font-size: 11px;
-        padding: 3px 14px;
-    }
-
-    .header-subtitle {
-        font-size: 12px;
-        letter-spacing: 2px;
-    }
-
-    .previa-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    #area-curriculo h2 {
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo-text {
-        font-size: 22px;
-    }
-
-    .logo-svg {
-        width: 36px;
-        height: 36px;
-    }
-
-    .logo {
-        gap: 12px;
-    }
-
-    .container {
-        padding: 15px 12px;
-    }
-
-    .header {
-        padding: 18px 12px 14px;
-        border-radius: 14px 14px 0 0;
-    }
-
-    .curriculo .nome-principal {
-        font-size: 22px;
-    }
-
-    .header-subtitle {
-        font-size: 10px;
-        letter-spacing: 1.5px;
-    }
-
-    button {
-        font-size: 11px;
-        padding: 12px 14px;
-        letter-spacing: 0.5px;
-    }
-
-    .btn-icon {
-        font-size: 16px;
-    }
-
-    .curriculo {
-        padding: 15px 12px;
-    }
-
-    .curriculo .secao h2 {
-        font-size: 14px;
-    }
-
-    .curriculo .secao p,
-    .curriculo .secao ul li,
-    .curriculo .cursos-lista li,
-    .curriculo .info-lista span {
-        font-size: 12px !important;
-    }
-
-    .curriculo .sobre-mim p {
-        font-size: 12px !important;
-    }
-
-    .curriculo .foto img {
-        width: 100px !important;
-        height: 100px !important;
-    }
-}
+        color: #A855F7 !
