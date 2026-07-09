@@ -813,4 +813,182 @@ footer {
 
     .curriculo .secao h2::before {
         content: "▶" !important;
-        color: #A855F7 !
+        color: #A855F7 !important;
+        font-size: 14px !important;
+        display: inline-block !important;
+    }
+
+    .curriculo .secao p {
+        display: block !important;
+        margin-bottom: 4px !important;
+        color: #1a0a2e !important;
+        font-size: 13px !important;
+        line-height: 1.7 !important;
+        white-space: pre-wrap !important;
+        word-wrap: break-word !important;
+    }
+
+    .curriculo .secao ul {
+        display: block !important;
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .curriculo .secao ul li {
+        display: block !important;
+        color: #1a0a2e !important;
+        font-size: 13px !important;
+        padding: 2px 0 !important;
+        padding-left: 20px !important;
+        position: relative !important;
+    }
+
+    .curriculo .secao ul li::before {
+        content: "▸" !important;
+        position: absolute !important;
+        left: 0 !important;
+        color: #A855F7 !important;
+        font-weight: bold !important;
+    }
+
+    .curriculo .habilidades {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        margin-top: 5px !important;
+    }
+
+    .curriculo .habilidades span {
+        background: #6C1B8C !important;
+        color: white !important;
+        padding: 4px 16px !important;
+        border-radius: 25px !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.5px !important;
+        box-shadow: 0 2px 10px rgba(108, 27, 140, 0.15) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        display: inline-block !important;
+    }
+
+    .curriculo .sobre-mim {
+        background: #faf8ff !important;
+        padding: 12px 18px !important;
+        border-radius: 12px !important;
+        border-left: 5px solid #A855F7 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        display: block !important;
+    }
+
+    .curriculo .sobre-mim p {
+        margin: 0 !important;
+        font-size: 13px !important;
+        color: #1a0a2e !important;
+        display: block !important;
+    }
+
+    .curriculo .foto {
+        display: block !important;
+        text-align: center !important;
+        margin-bottom: 15px !important;
+    }
+
+    .curriculo .foto img {
+        display: inline-block !important;
+        width: 130px !important;
+        height: 130px !important;
+        border-radius: 50% !important;
+        object-fit: cover !important;
+        border: 4px solid #A855F7 !important;
+        box-shadow: 0 8px 30px rgba(108, 27, 140, 0.2) !important;
+        max-width: 130px !important;
+        max-height: 130px !important;
+    }
+
+    .curriculo .info-lista {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px 20px !important;
+    }
+
+    .curriculo .info-lista span {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 5px !important;
+        font-size: 13px !important;
+        color: #1a0a2e !important;
+    }
+
+    .curriculo .info-lista span::before {
+        content: "✦" !important;
+        color: #A855F7 !important;
+        font-weight: bold !important;
+        font-size: 14px !important;
+        display: inline-block !important;
+    }
+
+    .curriculo .cursos-lista {
+        display: block !important;
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .curriculo .cursos-lista li {
+        display: block !important;
+        color: #1a0a2e !important;
+        font-size: 13px !important;
+        padding: 2px 0 !important;
+        padding-left: 28px !important;
+        position: relative !important;
+    }
+
+    .curriculo .cursos-lista li::before {
+        content: "📚" !important;
+        position: absolute !important;
+        left: 0 !important;
+        font-size: 12px !important;
+    }
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .container { padding: 20px 18px; }
+    .header { padding: 25px 18px 16px; border-radius: 18px 18px 0 0; }
+    .logo-text { font-size: 28px; letter-spacing: 1.5px; }
+    .logo-svg { width: 44px; height: 44px; }
+    .campo-linha { grid-template-columns: 1fr; gap: 0; }
+    .botoes { flex-direction: column; }
+    button { width: 100%; padding: 14px; font-size: 13px; min-width: auto; }
+    .curriculo { padding: 20px 18px; }
+    .curriculo .nome-principal { font-size: 26px; }
+    .curriculo .contato-grid { flex-direction: column; gap: 6px; align-items: center; }
+    .curriculo .contato-grid span { font-size: 12px; }
+    .curriculo .habilidades span { font-size: 11px; padding: 3px 14px; }
+    .header-subtitle { font-size: 12px; letter-spacing: 2px; }
+    .previa-header { flex-direction: column; align-items: flex-start; }
+    #area-curriculo h2 { font-size: 20px; }
+}
+
+@media (max-width: 480px) {
+    .logo-text { font-size: 22px; }
+    .logo-svg { width: 36px; height: 36px; }
+    .logo { gap: 12px; }
+    .container { padding: 15px 12px; }
+    .header { padding: 18px 12px 14px; border-radius: 14px 14px 0 0; }
+    .curriculo .nome-principal { font-size: 22px; }
+    .header-subtitle { font-size: 10px; letter-spacing: 1.5px; }
+    button { font-size: 11px; padding: 12px 14px; letter-spacing: 0.5px; }
+    .btn-icon { font-size: 16px; }
+    .curriculo { padding: 15px 12px; }
+    .curriculo .secao h2 { font-size: 14px; }
+    .curriculo .secao p,
+    .curriculo .secao ul li,
+    .curriculo .cursos-lista li,
+    .curriculo .info-lista span { font-size: 12px !important; }
+    .curriculo .sobre-mim p { font-size: 12px !important; }
+    .curriculo .foto img { width: 100px !important; height: 100px !important; }
+}
