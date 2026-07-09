@@ -57,12 +57,20 @@
                     <div class="form-card">
                         <h2 class="form-title"><i class="bi bi-pencil-square"></i> Preencha seus dados</h2>
                         
+                        <!-- ======================================== -->
+                        <!-- AVISO: CAMPOS OPCIONAIS -->
+                        <!-- ======================================== -->
+                        <div class="alert-info">
+                            <i class="bi bi-info-circle"></i>
+                            <span>Os campos com <strong>*</strong> são obrigatórios. Os demais são <strong>opcionais</strong> — você pode deixá-los em branco se preferir.</span>
+                        </div>
+                        
                         <!-- FOTO -->
                         <div class="form-section">
                             <h3 class="section-title"><i class="bi bi-image"></i> Foto de Perfil</h3>
                             <div class="foto-upload">
                                 <div class="foto-preview" id="fotoPreview">
-                                    <img src="assets/avatar.png" alt="Avatar" id="fotoPreviewImg">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23e5e7eb'/%3E%3Ccircle cx='50' cy='35' r='18' fill='%239ca3af'/%3E%3Ccircle cx='50' cy='85' r='28' fill='%239ca3af'/%3E%3C/svg%3E" alt="Avatar" id="fotoPreviewImg">
                                 </div>
                                 <div class="foto-actions">
                                     <label class="btn btn-outline-primary btn-sm">
@@ -116,7 +124,7 @@
                                     <input type="text" class="form-control" id="cep" placeholder="00000-000" maxlength="9">
                                 </div>
                                 <div class="col-8">
-                                    <label class="form-label">Rua</label>
+                                    <label class="form-label">Rua *</label>
                                     <input type="text" class="form-control" id="rua" placeholder="Nome da rua">
                                 </div>
                                 <div class="col-4">
@@ -128,11 +136,11 @@
                                     <input type="text" class="form-control" id="bairro" placeholder="Nome do bairro">
                                 </div>
                                 <div class="col-8">
-                                    <label class="form-label">Cidade</label>
+                                    <label class="form-label">Cidade *</label>
                                     <input type="text" class="form-control" id="cidade" placeholder="Nome da cidade">
                                 </div>
                                 <div class="col-4">
-                                    <label class="form-label">Estado</label>
+                                    <label class="form-label">Estado *</label>
                                     <input type="text" class="form-control" id="estado" placeholder="UF" maxlength="2">
                                 </div>
                             </div>
@@ -258,7 +266,6 @@
                         <h2 class="form-title"><i class="bi bi-eye"></i> Prévia do Currículo</h2>
                         <div class="preview-container" id="previewContainer">
                             <div class="curriculo-preview" id="curriculoPreview">
-                                <!-- O currículo será gerado aqui -->
                                 <div class="empty-state">
                                     <i class="bi bi-file-earmark-text" style="font-size: 48px; color: #ccc;"></i>
                                     <p style="color: #999; margin-top: 10px;">Preencha o formulário e clique em <strong>"GERAR CURRÍCULO"</strong></p>
