@@ -67,48 +67,48 @@ function gerarCurriculo() {
     `;
 
     // ========================================
-    // TODAS AS SEÇÕES COM TÍTULO FIXO
+    // TODAS AS SEÇÕES - SEM EMOJIS NOS TÍTULOS
     // ========================================
 
-    // OBJETIVO - SEMPRE APARECE
+    // OBJETIVO
     html += `
         <div class="secao">
-            <h2>🎯 Objetivo</h2>
+            <h2>Objetivo</h2>
             <p>${objetivo || 'Não informado'}</p>
         </div>
     `;
 
-    // SOBRE MIM - SEMPRE APARECE
+    // SOBRE MIM
     html += `
         <div class="secao">
-            <h2>💬 Sobre Mim</h2>
+            <h2>Sobre Mim</h2>
             <div class="sobre-mim">
                 <p>${sobre || 'Não informado'}</p>
             </div>
         </div>
     `;
 
-    // FORMAÇÃO ACADÊMICA - SEMPRE APARECE
+    // FORMAÇÃO ACADÊMICA
     html += `
         <div class="secao">
-            <h2>🎓 Formação Acadêmica</h2>
+            <h2>Formação Acadêmica</h2>
             <p>${formacao || 'Não informado'}</p>
         </div>
     `;
 
-    // EXPERIÊNCIA PROFISSIONAL - SEMPRE APARECE
+    // EXPERIÊNCIA PROFISSIONAL
     html += `
         <div class="secao">
-            <h2>💼 Experiência Profissional</h2>
+            <h2>Experiência Profissional</h2>
             <p>${experiencia || 'Não informado'}</p>
         </div>
     `;
 
-    // HABILIDADES - SEMPRE APARECE
+    // HABILIDADES
     const listaHabilidades = habilidades ? habilidades.split(',').map(h => h.trim()).filter(h => h) : [];
     html += `
         <div class="secao">
-            <h2>🛠️ Habilidades</h2>
+            <h2>Habilidades</h2>
             <div class="habilidades">
                 ${listaHabilidades.length > 0 
                     ? listaHabilidades.map(h => `<span>${h}</span>`).join('') 
@@ -117,11 +117,11 @@ function gerarCurriculo() {
         </div>
     `;
 
-    // CURSOS COMPLEMENTARES - SEMPRE APARECE
+    // CURSOS COMPLEMENTARES
     const listaCursos = cursos ? cursos.split('\n').filter(c => c.trim()) : [];
     html += `
         <div class="secao">
-            <h2>📚 Cursos Complementares</h2>
+            <h2>Cursos Complementares</h2>
             <ul class="cursos-lista">
                 ${listaCursos.length > 0 
                     ? listaCursos.map(c => `<li>${c.trim()}</li>`).join('') 
@@ -130,19 +130,19 @@ function gerarCurriculo() {
         </div>
     `;
 
-    // HOBBIES - SEMPRE APARECE
+    // HOBBIES
     html += `
         <div class="secao">
-            <h2>🌟 Hobbies e Interesses</h2>
+            <h2>Hobbies e Interesses</h2>
             <p>${hobbies || 'Não informado'}</p>
         </div>
     `;
 
-    // INFORMAÇÕES COMPLEMENTARES - SEMPRE APARECE
+    // INFORMAÇÕES COMPLEMENTARES
     const listaInfo = infoComplementar ? infoComplementar.split('\n').filter(i => i.trim()) : [];
     html += `
         <div class="secao">
-            <h2>📌 Informações Complementares</h2>
+            <h2>Informações Complementares</h2>
             <div class="info-lista">
                 ${listaInfo.length > 0 
                     ? listaInfo.map(i => `<span>${i.trim()}</span>`).join('') 
