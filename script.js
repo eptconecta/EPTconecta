@@ -1,5 +1,5 @@
 // ========================================
-// EPT CONECTA - GERADOR DE CURRÍCULO
+// E.P.T CONECTA - GERADOR DE CURRÍCULO
 // ========================================
 
 let fotoBase64 = null;
@@ -59,7 +59,7 @@ function gerarCurriculo() {
         <div class="nome-principal">${nome}</div>
         
         <div class="contato-grid">
-            <span>📧 ${email}</span>
+            <span>✉ ${email}</span>
             <span>📱 ${telefone}</span>
             <span>📍 ${enderecoCompleto}</span>
         </div>
@@ -69,7 +69,7 @@ function gerarCurriculo() {
     if (objetivo) {
         html += `
             <div class="secao">
-                <h2>🎯 Objetivo</h2>
+                <h2>Objetivo</h2>
                 <p>${objetivo}</p>
             </div>
         `;
@@ -79,7 +79,7 @@ function gerarCurriculo() {
     if (sobre) {
         html += `
             <div class="secao">
-                <h2>💬 Sobre Mim</h2>
+                <h2>Sobre Mim</h2>
                 <div class="sobre-mim">
                     <p>${sobre}</p>
                 </div>
@@ -91,7 +91,7 @@ function gerarCurriculo() {
     if (formacao) {
         html += `
             <div class="secao">
-                <h2>🎓 Formação Acadêmica</h2>
+                <h2>Formação Acadêmica</h2>
                 <p>${formacao}</p>
             </div>
         `;
@@ -101,7 +101,7 @@ function gerarCurriculo() {
     if (experiencia) {
         html += `
             <div class="secao">
-                <h2>💼 Experiência Profissional</h2>
+                <h2>Experiência Profissional</h2>
                 <p>${experiencia}</p>
             </div>
         `;
@@ -112,7 +112,7 @@ function gerarCurriculo() {
         const listaHabilidades = habilidades.split(',').map(h => h.trim()).filter(h => h);
         html += `
             <div class="secao">
-                <h2>🛠️ Habilidades</h2>
+                <h2>Habilidades</h2>
                 <div class="habilidades">
                     ${listaHabilidades.map(h => `<span>${h}</span>`).join('')}
                 </div>
@@ -125,7 +125,7 @@ function gerarCurriculo() {
         const listaCursos = cursos.split('\n').filter(c => c.trim());
         html += `
             <div class="secao">
-                <h2>📚 Cursos Complementares</h2>
+                <h2>Cursos Complementares</h2>
                 <ul class="cursos-lista">
                     ${listaCursos.map(c => `<li>${c.trim()}</li>`).join('')}
                 </ul>
@@ -137,7 +137,7 @@ function gerarCurriculo() {
     if (hobbies) {
         html += `
             <div class="secao">
-                <h2>🌟 Hobbies e Interesses</h2>
+                <h2>Hobbies e Interesses</h2>
                 <p>${hobbies}</p>
             </div>
         `;
@@ -148,7 +148,7 @@ function gerarCurriculo() {
         const listaInfo = infoComplementar.split('\n').filter(i => i.trim());
         html += `
             <div class="secao">
-                <h2>📌 Informações Complementares</h2>
+                <h2>Informações Complementares</h2>
                 <div class="info-lista">
                     ${listaInfo.map(i => `<span>${i.trim()}</span>`).join('')}
                 </div>
@@ -214,5 +214,5 @@ function imprimir() {
     window.print();
 }
 
-console.log('📄 EPT Conecta - Gerador de Currículo');
-console.log('Seus dados não são salvos');
+console.log('📄 E.P.T Conecta - Gerador de Currículo');
+console.log('✨ Seus dados não são salvos');
