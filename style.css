@@ -1,8 +1,700 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f0ff 0%, #ede9fe 30%, #f3e8ff 60%, #fce7f3 100%);
+    min-height: 100vh;
+    padding: 20px;
+    animation: fadeIn 0.8s ease-in-out;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 20%, rgba(168, 85, 247, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(236, 72, 153, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================
+   HEADER COM LOGO E.P.T CONECTA - ROXO CHAMATIVO
+   ======================================== */
+.header {
+    background: linear-gradient(135deg, #1a0a2e 0%, #4c1d6e 30%, #6C1B8C 55%, #8B2FC9 75%, #A855F7 100%);
+    padding: 35px 30px 20px;
+    border-radius: 25px 25px 0 0;
+    max-width: 950px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(108, 27, 140, 0.4);
+    z-index: 1;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatBubble 8s ease-in-out infinite;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(252, 211, 77, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatBubble 10s ease-in-out infinite reverse;
+}
+
+@keyframes floatBubble {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, -30px) scale(1.15); }
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* ========================================
+   LOGO E.P.T CONECTA - COM EFEITO GLOW
+   ======================================== */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 8px;
+    animation: slideDown 0.8s ease-out;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.logo-svg {
+    width: 58px;
+    height: 58px;
+    filter: drop-shadow(0 4px 25px rgba(252, 211, 77, 0.4));
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { filter: drop-shadow(0 4px 25px rgba(252, 211, 77, 0.4)); }
+    50% { filter: drop-shadow(0 4px 50px rgba(252, 211, 77, 0.8)); }
+}
+
+.logo-text {
+    font-size: 42px;
+    font-weight: 300;
+    color: #ffffff;
+    letter-spacing: 3px;
+    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.3);
+}
+
+.logo-text strong {
+    font-weight: 900;
+    background: linear-gradient(135deg, #FCD34D, #fbbf24, #f59e0b, #FCD34D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300% 300%;
+    animation: shimmerText 4s ease-in-out infinite;
+}
+
+@keyframes shimmerText {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.header-subtitle {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    margin-top: 2px;
+    animation: slideDown 1s ease-out 0.2s both;
+}
+
+.header-divider {
+    height: 4px;
+    background: linear-gradient(90deg, #FCD34D, #A855F7, #ec4899, #FCD34D);
+    margin-top: 18px;
+    border-radius: 3px;
+    position: relative;
+    z-index: 1;
+    animation: shimmerBar 4s ease-in-out infinite;
+    background-size: 300% 100%;
+}
+
+@keyframes shimmerBar {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* ========================================
+   CONTAINER PRINCIPAL
+   ======================================== */
+.container {
+    max-width: 950px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    padding: 40px 45px 35px;
+    border-radius: 0 0 25px 25px;
+    box-shadow: 0 25px 70px rgba(108, 27, 140, 0.15);
+    animation: fadeIn 0.8s ease-out 0.3s both;
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   FORMULÁRIO
+   ======================================== */
+.formulario {
+    margin-bottom: 35px;
+}
+
+.campo {
+    margin-bottom: 18px;
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+.campo:nth-child(1) { animation-delay: 0.05s; }
+.campo:nth-child(2) { animation-delay: 0.1s; }
+.campo:nth-child(3) { animation-delay: 0.15s; }
+.campo:nth-child(4) { animation-delay: 0.2s; }
+.campo:nth-child(5) { animation-delay: 0.25s; }
+.campo:nth-child(6) { animation-delay: 0.3s; }
+.campo:nth-child(7) { animation-delay: 0.35s; }
+.campo:nth-child(8) { animation-delay: 0.4s; }
+.campo:nth-child(9) { animation-delay: 0.45s; }
+.campo:nth-child(10) { animation-delay: 0.5s; }
+.campo:nth-child(11) { animation-delay: 0.55s; }
+.campo:nth-child(12) { animation-delay: 0.6s; }
+.campo:nth-child(13) { animation-delay: 0.65s; }
+.campo:nth-child(14) { animation-delay: 0.7s; }
+.campo:nth-child(15) { animation-delay: 0.75s; }
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.campo-linha {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #4c1d6e;
+    font-size: 14px;
+    position: relative;
+    letter-spacing: 0.3px;
+}
+
+label::after {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 16px;
+    background: linear-gradient(180deg, #A855F7, #6C1B8C);
+    margin-left: 8px;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #ede9fe;
+    border-radius: 14px;
+    font-size: 14px;
+    font-family: 'Poppins', Arial, sans-serif;
+    transition: all 0.4s ease;
+    background: #faf8ff;
+    color: #1a0a2e;
+}
+
+input:focus, textarea:focus {
+    border-color: #A855F7;
+    outline: none;
+    box-shadow: 0 0 0 5px rgba(168, 85, 247, 0.15);
+    background: #ffffff;
+    transform: scale(1.01);
+}
+
+input:hover, textarea:hover {
+    border-color: #8B2FC9;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #a78bb5;
+    font-weight: 300;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+/* ========================================
+   BOTÕES COM ANIMAÇÕES ESPETACULARES
+   ======================================== */
+.botoes {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 16px 36px;
+    border: none;
+    border-radius: 16px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-family: 'Poppins', Arial, sans-serif;
+    flex: 1;
+    min-width: 160px;
+    letter-spacing: 0.8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: scale(0.97);
+}
+
+.btn-icon {
+    font-size: 20px;
+    transition: transform 0.4s ease;
+}
+
+button:hover:not(:disabled) .btn-icon {
+    transform: scale(1.3) rotate(10deg);
+}
+
+/* Botão Gerar - ROXO COM EFEITO */
+.btn-gerar {
+    background: linear-gradient(135deg, #6C1B8C, #8B2FC9, #A855F7);
+    color: white;
+    box-shadow: 0 6px 30px rgba(108, 27, 140, 0.4);
+}
+
+.btn-gerar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.8s ease;
+    transform: skewX(-20deg);
+}
+
+.btn-gerar:hover:not(:disabled) {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 45px rgba(108, 27, 140, 0.6);
+}
+
+.btn-gerar:hover:not(:disabled)::before {
+    left: 100%;
+}
+
+.btn-gerar:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+/* Botão Limpar */
+.btn-limpar {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    color: white;
+    box-shadow: 0 6px 30px rgba(220, 38, 38, 0.3);
+}
+
+.btn-limpar:hover:not(:disabled) {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 45px rgba(220, 38, 38, 0.5);
+}
+
+.btn-limpar:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+/* Botão PDF */
+.btn-pdf {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+    color: white;
+    box-shadow: 0 6px 30px rgba(22, 163, 74, 0.35);
+}
+
+.btn-pdf:hover:not(:disabled) {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 45px rgba(22, 163, 74, 0.55);
+}
+
+.btn-pdf:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+/* Botão Imprimir */
+.btn-imprimir {
+    background: linear-gradient(135deg, #ea580c, #c2410c);
+    color: white;
+    box-shadow: 0 6px 30px rgba(234, 88, 12, 0.35);
+}
+
+.btn-imprimir:hover:not(:disabled) {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 45px rgba(234, 88, 12, 0.55);
+}
+
+.btn-imprimir:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+/* ========================================
+   ÁREA DO CURRÍCULO - PRÉVIA BONITA
+   ======================================== */
+#area-curriculo {
+    margin-top: 35px;
+    border-top: 3px solid #A855F7;
+    padding-top: 25px;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.previa-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#area-curriculo h2 {
+    color: #4c1d6e;
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.previa-badge {
+    background: linear-gradient(135deg, #6C1B8C, #A855F7);
+    color: white;
+    padding: 6px 18px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.pdf-container {
+    background: white;
+    padding: 0;
+    border-radius: 5px;
+}
+
+/* ========================================
+   CURRÍCULO - ESTILO ROXO CHAMATIVO
+   ======================================== */
+.curriculo {
+    position: relative;
+    background: white;
+    padding: 45px 40px;
+    border: 2px solid #ede9fe;
+    border-radius: 18px;
+    min-height: 200px;
+    line-height: 1.8;
+    overflow: hidden;
+    max-width: 100%;
+    font-family: 'Poppins', Arial, sans-serif;
+    box-shadow: 0 6px 30px rgba(108, 27, 140, 0.06);
+}
+
+.curriculo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #6C1B8C, #A855F7, #ec4899, #A855F7, #6C1B8C);
+    background-size: 200% 100%;
+    animation: shimmerBar 4s ease-in-out infinite;
+}
+
+.curriculo::after {
+    content: "Gerado por E.P.T Conecta";
+    position: absolute;
+    bottom: 18px;
+    right: 25px;
+    font-size: 11px;
+    color: rgba(108, 27, 140, 0.15);
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    transform: rotate(-4deg);
+    pointer-events: none;
+    font-family: 'Poppins', Arial, sans-serif;
+    z-index: 1;
+}
+
+/* NOME EM DESTAQUE */
+.curriculo .nome-principal {
+    font-size: 36px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #1a0a2e, #4c1d6e, #8B2FC9, #A855F7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-bottom: 5px;
+    letter-spacing: 1.5px;
+}
+
+/* CONTATO */
+.curriculo .contato-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #A855F7;
+}
+
+.curriculo .contato-grid span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+/* SEÇÕES */
+.curriculo .secao {
+    margin-bottom: 20px;
+}
+
+.curriculo .secao h2 {
+    color: #4c1d6e;
+    font-size: 17px;
+    font-weight: 700;
+    border-bottom: 2px solid #A855F7;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.5px;
+}
+
+.curriculo .secao h2::before {
+    content: "▶";
+    color: #A855F7;
+    font-size: 14px;
+}
+
+.curriculo .secao p {
+    margin-bottom: 4px;
+    color: #1a0a2e;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 13.5px;
+    line-height: 1.8;
+}
+
+.curriculo .secao ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.curriculo .secao ul li {
+    color: #1a0a2e;
+    font-size: 13.5px;
+    padding: 3px 0;
+    padding-left: 22px;
+    position: relative;
+}
+
+.curriculo .secao ul li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #A855F7;
+    font-weight: bold;
+}
+
+/* HABILIDADES */
+.curriculo .habilidades {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.curriculo .habilidades span {
+    background: linear-gradient(135deg, #6C1B8C, #8B2FC9);
+    color: white;
+    padding: 5px 20px;
+    border-radius: 25px;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 10px rgba(108, 27, 140, 0.15);
+}
+
+.curriculo .habilidades span:hover {
+    transform: scale(1.08);
+}
+
+/* SOBRE MIM */
+.curriculo .sobre-mim {
+    background: linear-gradient(135deg, #faf8ff, #f3e8ff);
+    padding: 14px 20px;
+    border-radius: 12px;
+    border-left: 5px solid #A855F7;
+}
+
+.curriculo .sobre-mim p {
+    margin: 0;
+    font-size: 13.5px;
+}
+
+/* FOTO */
+.curriculo .foto {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.curriculo .foto img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #A855F7;
+    box-shadow: 0 8px 30px rgba(108, 27, 140, 0.2);
+    transition: transform 0.5s ease;
+}
+
+.curriculo .foto img:hover {
+    transform: scale(1.05) rotate(3deg);
+}
+
+/* INFO COMPLEMENTAR */
+.curriculo .info-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 25px;
+}
+
+.curriculo .info-lista span {
+    font-size: 13.5px;
+    color: #1a0a2e;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.curriculo .info-lista span::before {
+    content: "✦";
+    color: #A855F7;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* CURSOS */
+.curriculo .cursos-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.curriculo .cursos-lista li {
+    color: #1a0a2e;
+    font-size: 13.5px;
+    padding: 3px 0;
+    padding-left: 28px;
+    position: relative;
+}
+
+.curriculo .cursos-lista li::before {
+    content: "📚";
+    position: absolute;
+    left: 0;
+    font-size: 13px;
+}
+
+/* ========================================
+   RODAPÉ
+   ======================================== */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 22px;
+    border-top: 2px solid #ede9fe;
+    color: #8B2FC9;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
 /* ========================================
    ESTILO PARA IMPRESSÃO - CORRIGIDO
    ======================================== */
 @media print {
-    /* RESET GERAL PARA IMPRESSÃO */
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
@@ -16,15 +708,15 @@
         font-family: 'Poppins', Arial, sans-serif !important;
     }
 
-    /* ESCONDER ELEMENTOS QUE NÃO SÃO DO CURRÍCULO */
-    .header {
-        display: none !important;
-    }
+    body::before { display: none !important; }
 
+    .header,
     .formulario,
     .botoes,
     .btn-pdf,
     .btn-imprimir,
+    .previa-header,
+    .previa-badge,
     #area-curriculo h2,
     footer {
         display: none !important;
@@ -37,6 +729,7 @@
         max-width: 100% !important;
         background: white !important;
         margin: 0 !important;
+        backdrop-filter: none !important;
     }
 
     #area-curriculo {
@@ -52,9 +745,6 @@
         margin: 0 !important;
     }
 
-    /* ========================================
-       CURRÍCULO NA IMPRESSÃO - TODOS OS ESTILOS MANTIDOS
-       ======================================== */
     .curriculo {
         border: none !important;
         padding: 30px 35px !important;
@@ -68,7 +758,7 @@
         line-height: 1.8 !important;
     }
 
-    /* MARCA D'ÁGUA */
+    .curriculo::before { display: none !important; }
     .curriculo::after {
         content: "Gerado por E.P.T Conecta" !important;
         position: absolute !important;
@@ -84,7 +774,6 @@
         z-index: 1 !important;
     }
 
-    /* NOME */
     .curriculo .nome-principal {
         font-size: 32px !important;
         font-weight: 900 !important;
@@ -96,7 +785,6 @@
         -webkit-text-fill-color: #4c1d6e !important;
     }
 
-    /* CONTATO */
     .curriculo .contato-grid {
         display: flex !important;
         justify-content: center !important;
@@ -117,9 +805,6 @@
         font-size: 14px !important;
     }
 
-    /* ========================================
-       SEÇÕES - ESSA É A PARTE MAIS IMPORTANTE!
-       ======================================== */
     .curriculo .secao {
         margin-bottom: 18px !important;
         page-break-inside: avoid !important;
@@ -148,14 +833,13 @@
 
     .curriculo .secao p {
         margin-bottom: 3px !important;
-        color: #333 !important;
+        color: #1a0a2e !important;
         white-space: pre-wrap !important;
         word-wrap: break-word !important;
         font-size: 13px !important;
         line-height: 1.7 !important;
     }
 
-    /* LISTAS */
     .curriculo .secao ul {
         list-style: none !important;
         padding: 0 !important;
@@ -163,7 +847,7 @@
     }
 
     .curriculo .secao ul li {
-        color: #333 !important;
+        color: #1a0a2e !important;
         font-size: 13px !important;
         padding: 2px 0 !important;
         padding-left: 20px !important;
@@ -178,7 +862,6 @@
         font-weight: bold !important;
     }
 
-    /* HABILIDADES */
     .curriculo .habilidades {
         display: flex !important;
         flex-wrap: wrap !important;
@@ -196,9 +879,9 @@
         letter-spacing: 0.3px !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
+        box-shadow: none !important;
     }
 
-    /* SOBRE MIM */
     .curriculo .sobre-mim {
         background: #faf8ff !important;
         padding: 12px 18px !important;
@@ -211,10 +894,9 @@
     .curriculo .sobre-mim p {
         margin: 0 !important;
         font-size: 13px !important;
-        color: #333 !important;
+        color: #1a0a2e !important;
     }
 
-    /* FOTO */
     .curriculo .foto {
         text-align: center !important;
         margin-bottom: 15px !important;
@@ -228,9 +910,9 @@
         border: 4px solid #A855F7 !important;
         max-width: 130px !important;
         max-height: 130px !important;
+        box-shadow: none !important;
     }
 
-    /* INFO COMPLEMENTAR */
     .curriculo .info-lista {
         display: flex !important;
         flex-wrap: wrap !important;
@@ -239,20 +921,19 @@
 
     .curriculo .info-lista span {
         font-size: 13px !important;
-        color: #333 !important;
+        color: #1a0a2e !important;
         display: flex !important;
         align-items: center !important;
         gap: 4px !important;
     }
 
     .curriculo .info-lista span::before {
-        content: "•" !important;
+        content: "✦" !important;
         color: #A855F7 !important;
         font-weight: bold !important;
-        font-size: 16px !important;
+        font-size: 14px !important;
     }
 
-    /* CURSOS */
     .curriculo .cursos-lista {
         list-style: none !important;
         padding: 0 !important;
@@ -260,10 +941,10 @@
     }
 
     .curriculo .cursos-lista li {
-        color: #333 !important;
+        color: #1a0a2e !important;
         font-size: 13px !important;
         padding: 2px 0 !important;
-        padding-left: 24px !important;
+        padding-left: 28px !important;
         position: relative !important;
     }
 
@@ -272,5 +953,149 @@
         position: absolute !important;
         left: 0 !important;
         font-size: 12px !important;
+    }
+}
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 18px;
+    }
+
+    .header {
+        padding: 25px 18px 16px;
+        border-radius: 18px 18px 0 0;
+    }
+
+    .logo-text {
+        font-size: 28px;
+        letter-spacing: 1.5px;
+    }
+
+    .logo-svg {
+        width: 44px;
+        height: 44px;
+    }
+
+    .campo-linha {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+        font-size: 13px;
+        min-width: auto;
+    }
+
+    .curriculo {
+        padding: 20px 18px;
+    }
+
+    .curriculo .nome-principal {
+        font-size: 26px;
+    }
+
+    .curriculo .contato-grid {
+        flex-direction: column;
+        gap: 6px;
+        align-items: center;
+    }
+
+    .curriculo .contato-grid span {
+        font-size: 12px;
+    }
+
+    .curriculo .habilidades span {
+        font-size: 11px;
+        padding: 3px 14px;
+    }
+
+    .header-subtitle {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .previa-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #area-curriculo h2 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 22px;
+    }
+
+    .logo-svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    .logo {
+        gap: 12px;
+    }
+
+    .container {
+        padding: 15px 12px;
+    }
+
+    .header {
+        padding: 18px 12px 14px;
+        border-radius: 14px 14px 0 0;
+    }
+
+    .curriculo .nome-principal {
+        font-size: 22px;
+    }
+
+    .header-subtitle {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    button {
+        font-size: 11px;
+        padding: 12px 14px;
+        letter-spacing: 0.5px;
+    }
+
+    .btn-icon {
+        font-size: 16px;
+    }
+
+    .curriculo {
+        padding: 15px 12px;
+    }
+
+    .curriculo .secao h2 {
+        font-size: 14px;
+    }
+
+    .curriculo .secao p,
+    .curriculo .secao ul li,
+    .curriculo .cursos-lista li,
+    .curriculo .info-lista span {
+        font-size: 12px !important;
+    }
+
+    .curriculo .sobre-mim p {
+        font-size: 12px !important;
+    }
+
+    .curriculo .foto img {
+        width: 100px !important;
+        height: 100px !important;
     }
 }
