@@ -49,7 +49,7 @@ function gerarCurriculo() {
     const enderecoCompleto = `${rua}, ${numero}, ${bairro}, ${cidade}/${estado}`;
 
     // ========================================
-    // PREENCHER AS SEÇÕES FIXAS DO CURRÍCULO
+    // PREENCHER AS SEÇÕES FIXAS
     // ========================================
 
     // FOTO
@@ -133,7 +133,7 @@ function limparCampos() {
 }
 
 // ========================================
-// FUNÇÃO PARA BAIXAR PDF
+// FUNÇÃO PARA BAIXAR PDF - CAPTURA A TELA!
 // ========================================
 function baixarPDF() {
     const element = document.getElementById('previa-curriculo');
@@ -145,14 +145,52 @@ function baixarPDF() {
 
     const btn = document.querySelector('.btn-pdf');
     const textoOriginal = btn.textContent;
-    btn.textContent = '⏳ Preparando PDF...';
+    btn.textContent = '⏳ Gerando PDF...';
     btn.disabled = true;
 
-    setTimeout(() => {
-        window.print();
+    // Usar html2canvas para capturar a tela do currículo
+    html2canvas(element, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        logging: false,
+        backgroundColor: '#ffffff',
+        width: element.scrollWidth,
+        height: element.scrollHeight,
+        windowWidth: element.scrollWidth,
+        windowHeight: element.scrollHeight
+    }).then(function(canvas) {
+        // Converter canvas para imagem
+        const imgData = canvas.toDataURL('image/jpeg', 1.0);
+        
+        // Criar PDF com jsPDF
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+        
+        // Calcular proporção
+        const imgWidth = canvas.width;
+        const imgHeight = canvas.height;
+        const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+        const imgX = (pdfWidth - imgWidth * ratio) / 2;
+        const imgY = 0;
+        
+        // Adicionar imagem ao PDF
+        pdf.addImage(imgData, 'JPEG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+        
+        // Salvar PDF
+        const nomeArquivo = document.getElementById('nome').value.trim() || 'curriculo';
+        pdf.save(`${nomeArquivo}.pdf`);
+        
         btn.textContent = textoOriginal;
         btn.disabled = false;
-    }, 500);
+    }).catch(function(error) {
+        console.error('Erro ao gerar PDF:', error);
+        alert('❌ Erro ao gerar PDF. Tente usar a opção "IMPRIMIR" e salvar como PDF.');
+        btn.textContent = textoOriginal;
+        btn.disabled = false;
+    });
 }
 
 // ========================================
