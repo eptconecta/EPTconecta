@@ -50,7 +50,7 @@ function gerarCurriculo() {
 
     // ========================================
     // MONTAR O HTML DO CURRÍCULO
-    // TODAS AS SEÇÕES APARECEM MESMO VAZIAS!
+    // TODAS AS SEÇÕES SEMPRE APARECEM!
     // ========================================
     let html = `
         <div class="foto">
@@ -67,10 +67,10 @@ function gerarCurriculo() {
     `;
 
     // ========================================
-    // TODAS AS SEÇÕES - SEM EMOJIS NOS TÍTULOS
+    // TODAS AS SEÇÕES - FIXAS! SEMPRE APARECEM!
     // ========================================
 
-    // OBJETIVO
+    // 1. OBJETIVO - SEMPRE APARECE
     html += `
         <div class="secao">
             <h2>Objetivo</h2>
@@ -78,7 +78,7 @@ function gerarCurriculo() {
         </div>
     `;
 
-    // SOBRE MIM
+    // 2. SOBRE MIM - SEMPRE APARECE
     html += `
         <div class="secao">
             <h2>Sobre Mim</h2>
@@ -88,7 +88,7 @@ function gerarCurriculo() {
         </div>
     `;
 
-    // FORMAÇÃO ACADÊMICA
+    // 3. FORMAÇÃO ACADÊMICA - SEMPRE APARECE
     html += `
         <div class="secao">
             <h2>Formação Acadêmica</h2>
@@ -96,7 +96,7 @@ function gerarCurriculo() {
         </div>
     `;
 
-    // EXPERIÊNCIA PROFISSIONAL
+    // 4. EXPERIÊNCIA PROFISSIONAL - SEMPRE APARECE
     html += `
         <div class="secao">
             <h2>Experiência Profissional</h2>
@@ -104,7 +104,7 @@ function gerarCurriculo() {
         </div>
     `;
 
-    // HABILIDADES
+    // 5. HABILIDADES - SEMPRE APARECE
     const listaHabilidades = habilidades ? habilidades.split(',').map(h => h.trim()).filter(h => h) : [];
     html += `
         <div class="secao">
@@ -117,7 +117,7 @@ function gerarCurriculo() {
         </div>
     `;
 
-    // CURSOS COMPLEMENTARES
+    // 6. CURSOS COMPLEMENTARES - SEMPRE APARECE
     const listaCursos = cursos ? cursos.split('\n').filter(c => c.trim()) : [];
     html += `
         <div class="secao">
@@ -130,7 +130,7 @@ function gerarCurriculo() {
         </div>
     `;
 
-    // HOBBIES
+    // 7. HOBBIES - SEMPRE APARECE
     html += `
         <div class="secao">
             <h2>Hobbies e Interesses</h2>
@@ -138,7 +138,7 @@ function gerarCurriculo() {
         </div>
     `;
 
-    // INFORMAÇÕES COMPLEMENTARES
+    // 8. INFORMAÇÕES COMPLEMENTARES - SEMPRE APARECE
     const listaInfo = infoComplementar ? infoComplementar.split('\n').filter(i => i.trim()) : [];
     html += `
         <div class="secao">
