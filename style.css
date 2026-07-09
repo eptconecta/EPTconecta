@@ -429,7 +429,6 @@ body {
     max-width: 100%;
 }
 
-/* Marca d'água */
 .curriculo-preview::after {
     content: "Gerado por E.P.T Conecta";
     position: absolute;
@@ -443,7 +442,6 @@ body {
     pointer-events: none;
 }
 
-/* Cabeçalho do currículo */
 .curriculo-header {
     display: flex;
     align-items: center;
@@ -496,25 +494,21 @@ body {
     width: 18px;
 }
 
-/* Conteúdo 2 colunas */
 .curriculo-body {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 30px;
 }
 
-/* Coluna esquerda */
 .curriculo-col-esquerda {
     border-right: 2px solid #f0f0f0;
     padding-right: 25px;
 }
 
-/* Coluna direita */
 .curriculo-col-direita {
     padding-left: 5px;
 }
 
-/* Seções do currículo */
 .curriculo-secao {
     margin-bottom: 18px;
 }
@@ -586,7 +580,6 @@ body {
     font-weight: 500;
 }
 
-/* Experiência e Formação */
 .exp-item,
 .form-item {
     margin-bottom: 12px;
@@ -629,9 +622,6 @@ body {
     animation: fadeIn 0.5s ease;
 }
 
-/* ======================================== */
-/* ANIMAÇÕES */
-/* ======================================== */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
