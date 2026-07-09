@@ -692,9 +692,10 @@ footer {
 }
 
 /* ========================================
-   ESTILO PARA IMPRESSÃO - CORRIGIDO
+   ESTILO PARA IMPRESSÃO - CORRIGIDO 100%
    ======================================== */
 @media print {
+    /* FORÇA TODAS AS CORES E ESTILOS NA IMPRESSÃO */
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
@@ -708,8 +709,11 @@ footer {
         font-family: 'Poppins', Arial, sans-serif !important;
     }
 
-    body::before { display: none !important; }
+    body::before {
+        display: none !important;
+    }
 
+    /* ESCONDE TUDO QUE NÃO É O CURRÍCULO */
     .header,
     .formulario,
     .botoes,
@@ -745,6 +749,9 @@ footer {
         margin: 0 !important;
     }
 
+    /* ========================================
+       CURRÍCULO NA IMPRESSÃO
+       ======================================== */
     .curriculo {
         border: none !important;
         padding: 30px 35px !important;
@@ -758,7 +765,12 @@ footer {
         line-height: 1.8 !important;
     }
 
-    .curriculo::before { display: none !important; }
+    /* Remove a faixa colorida do topo na impressão */
+    .curriculo::before {
+        display: none !important;
+    }
+
+    /* MARCA D'ÁGUA */
     .curriculo::after {
         content: "Gerado por E.P.T Conecta" !important;
         position: absolute !important;
@@ -774,6 +786,7 @@ footer {
         z-index: 1 !important;
     }
 
+    /* NOME */
     .curriculo .nome-principal {
         font-size: 32px !important;
         font-weight: 900 !important;
@@ -785,6 +798,7 @@ footer {
         -webkit-text-fill-color: #4c1d6e !important;
     }
 
+    /* CONTATO */
     .curriculo .contato-grid {
         display: flex !important;
         justify-content: center !important;
@@ -805,9 +819,13 @@ footer {
         font-size: 14px !important;
     }
 
+    /* ========================================
+       SEÇÕES - AGORA VÃO APARECER!
+       ======================================== */
     .curriculo .secao {
         margin-bottom: 18px !important;
         page-break-inside: avoid !important;
+        display: block !important;
     }
 
     .curriculo .secao h2 {
@@ -817,9 +835,7 @@ footer {
         border-bottom: 2px solid #A855F7 !important;
         padding-bottom: 4px !important;
         margin-bottom: 8px !important;
-        display: flex !important;
-        align-items: center !important;
-        gap: 8px !important;
+        display: block !important;
         letter-spacing: 0.5px !important;
         background: none !important;
         -webkit-text-fill-color: #4c1d6e !important;
@@ -829,6 +845,8 @@ footer {
         content: "▶" !important;
         color: #A855F7 !important;
         font-size: 14px !important;
+        margin-right: 8px !important;
+        display: inline-block !important;
     }
 
     .curriculo .secao p {
@@ -838,12 +856,15 @@ footer {
         word-wrap: break-word !important;
         font-size: 13px !important;
         line-height: 1.7 !important;
+        display: block !important;
     }
 
+    /* LISTAS */
     .curriculo .secao ul {
         list-style: none !important;
         padding: 0 !important;
         margin: 0 !important;
+        display: block !important;
     }
 
     .curriculo .secao ul li {
@@ -852,6 +873,7 @@ footer {
         padding: 2px 0 !important;
         padding-left: 20px !important;
         position: relative !important;
+        display: block !important;
     }
 
     .curriculo .secao ul li::before {
@@ -862,6 +884,7 @@ footer {
         font-weight: bold !important;
     }
 
+    /* HABILIDADES */
     .curriculo .habilidades {
         display: flex !important;
         flex-wrap: wrap !important;
@@ -880,8 +903,10 @@ footer {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
         box-shadow: none !important;
+        display: inline-block !important;
     }
 
+    /* SOBRE MIM */
     .curriculo .sobre-mim {
         background: #faf8ff !important;
         padding: 12px 18px !important;
@@ -889,17 +914,21 @@ footer {
         border-left: 4px solid #A855F7 !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
+        display: block !important;
     }
 
     .curriculo .sobre-mim p {
         margin: 0 !important;
         font-size: 13px !important;
         color: #1a0a2e !important;
+        display: block !important;
     }
 
+    /* FOTO */
     .curriculo .foto {
         text-align: center !important;
         margin-bottom: 15px !important;
+        display: block !important;
     }
 
     .curriculo .foto img {
@@ -911,8 +940,10 @@ footer {
         max-width: 130px !important;
         max-height: 130px !important;
         box-shadow: none !important;
+        display: inline-block !important;
     }
 
+    /* INFO COMPLEMENTAR */
     .curriculo .info-lista {
         display: flex !important;
         flex-wrap: wrap !important;
@@ -922,7 +953,7 @@ footer {
     .curriculo .info-lista span {
         font-size: 13px !important;
         color: #1a0a2e !important;
-        display: flex !important;
+        display: inline-flex !important;
         align-items: center !important;
         gap: 4px !important;
     }
@@ -932,12 +963,15 @@ footer {
         color: #A855F7 !important;
         font-weight: bold !important;
         font-size: 14px !important;
+        display: inline-block !important;
     }
 
+    /* CURSOS */
     .curriculo .cursos-lista {
         list-style: none !important;
         padding: 0 !important;
         margin: 0 !important;
+        display: block !important;
     }
 
     .curriculo .cursos-lista li {
@@ -946,6 +980,7 @@ footer {
         padding: 2px 0 !important;
         padding-left: 28px !important;
         position: relative !important;
+        display: block !important;
     }
 
     .curriculo .cursos-lista li::before {
