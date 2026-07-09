@@ -70,7 +70,7 @@ function gerarCurriculo() {
     // TODAS AS SEÇÕES - FIXAS! SEMPRE APARECEM!
     // ========================================
 
-    // 1. OBJETIVO - SEMPRE APARECE
+    // 1. OBJETIVO
     html += `
         <div class="secao">
             <h2>Objetivo</h2>
@@ -78,7 +78,7 @@ function gerarCurriculo() {
         </div>
     `;
 
-    // 2. SOBRE MIM - SEMPRE APARECE
+    // 2. SOBRE MIM
     html += `
         <div class="secao">
             <h2>Sobre Mim</h2>
@@ -88,7 +88,7 @@ function gerarCurriculo() {
         </div>
     `;
 
-    // 3. FORMAÇÃO ACADÊMICA - SEMPRE APARECE
+    // 3. FORMAÇÃO ACADÊMICA
     html += `
         <div class="secao">
             <h2>Formação Acadêmica</h2>
@@ -96,7 +96,7 @@ function gerarCurriculo() {
         </div>
     `;
 
-    // 4. EXPERIÊNCIA PROFISSIONAL - SEMPRE APARECE
+    // 4. EXPERIÊNCIA PROFISSIONAL
     html += `
         <div class="secao">
             <h2>Experiência Profissional</h2>
@@ -104,7 +104,7 @@ function gerarCurriculo() {
         </div>
     `;
 
-    // 5. HABILIDADES - SEMPRE APARECE
+    // 5. HABILIDADES
     const listaHabilidades = habilidades ? habilidades.split(',').map(h => h.trim()).filter(h => h) : [];
     html += `
         <div class="secao">
@@ -117,7 +117,7 @@ function gerarCurriculo() {
         </div>
     `;
 
-    // 6. CURSOS COMPLEMENTARES - SEMPRE APARECE
+    // 6. CURSOS COMPLEMENTARES
     const listaCursos = cursos ? cursos.split('\n').filter(c => c.trim()) : [];
     html += `
         <div class="secao">
@@ -130,7 +130,7 @@ function gerarCurriculo() {
         </div>
     `;
 
-    // 7. HOBBIES - SEMPRE APARECE
+    // 7. HOBBIES
     html += `
         <div class="secao">
             <h2>Hobbies e Interesses</h2>
@@ -138,7 +138,7 @@ function gerarCurriculo() {
         </div>
     `;
 
-    // 8. INFORMAÇÕES COMPLEMENTARES - SEMPRE APARECE
+    // 8. INFORMAÇÕES COMPLEMENTARES
     const listaInfo = infoComplementar ? infoComplementar.split('\n').filter(i => i.trim()) : [];
     html += `
         <div class="secao">
