@@ -34,8 +34,8 @@ document.getElementById('cep').addEventListener('input', function(e) {
         value = value.replace(/(\d{5})(\d)/, '$1-$2');
         e.target.value = value;
     }
-    if (value.length === 8) {
-        buscarCep(value);
+    if (value.replace(/\D/g, '').length === 8) {
+        buscarCep(value.replace(/\D/g, ''));
     }
 });
 
@@ -97,7 +97,7 @@ document.getElementById('fotoInput').addEventListener('change', function(e) {
 });
 
 document.getElementById('removerFoto').addEventListener('click', function() {
-    document.getElementById('fotoPreviewImg').src = 'assets/avatar.png';
+    document.getElementById('fotoPreviewImg').src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="50" fill="%23e5e7eb"/%3E%3Ccircle cx="50" cy="35" r="18" fill="%239ca3af"/%3E%3Ccircle cx="50" cy="85" r="28" fill="%239ca3af"/%3E%3C/svg%3E';
     document.getElementById('fotoInput').value = '';
     fotoBase64 = null;
 });
@@ -252,7 +252,6 @@ function gerarCurriculo() {
     document.getElementById('curriculoPreview').innerHTML = html;
     document.getElementById('previewBadge').style.display = 'flex';
 
-    // Salvar no LocalStorage
     localStorage.setItem('curriculoEpt', JSON.stringify(dados));
 }
 
@@ -277,7 +276,6 @@ function coletarDados() {
         return null;
     }
 
-    // Experiências
     const experiencias = [];
     document.querySelectorAll('.experiencia-item').forEach(item => {
         const empresa = item.querySelector('[data-exp="empresa"]').value.trim();
@@ -290,7 +288,6 @@ function coletarDados() {
         }
     });
 
-    // Formações
     const formacoes = [];
     document.querySelectorAll('.formacao-item').forEach(item => {
         const curso = item.querySelector('[data-form="curso"]').value.trim();
@@ -301,7 +298,6 @@ function coletarDados() {
         }
     });
 
-    // Cursos
     const cursos = [];
     document.querySelectorAll('.curso-item').forEach(item => {
         const nomeCurso = item.querySelector('[data-curso="nome"]').value.trim();
@@ -334,7 +330,6 @@ function coletarDados() {
 function montarCurriculo(dados) {
     const endereco = `${dados.endereco.rua}, ${dados.endereco.numero}${dados.endereco.bairro ? ', ' + dados.endereco.bairro : ''}, ${dados.endereco.cidade}/${dados.endereco.estado}`;
 
-    // Experiências
     let expHtml = '';
     if (dados.experiencias.length > 0) {
         dados.experiencias.forEach(exp => {
@@ -350,7 +345,6 @@ function montarCurriculo(dados) {
         });
     }
 
-    // Formações
     let formHtml = '';
     if (dados.formacoes.length > 0) {
         dados.formacoes.forEach(form => {
@@ -364,7 +358,6 @@ function montarCurriculo(dados) {
         });
     }
 
-    // Cursos
     let cursosHtml = '';
     if (dados.cursos.length > 0) {
         dados.cursos.forEach(curso => {
@@ -372,19 +365,16 @@ function montarCurriculo(dados) {
         });
     }
 
-    // Habilidades
     let habHtml = '';
     if (dados.habilidades.length > 0) {
         habHtml = dados.habilidades.map(h => `<span class="tag-preview">${h}</span>`).join('');
     }
 
-    // Idiomas
     let idiomaHtml = '';
     if (dados.idiomas.length > 0) {
         idiomaHtml = dados.idiomas.map(i => `<span class="tag-preview">${i}</span>`).join('');
     }
 
-    // Informações Complementares
     let infoHtml = '';
     if (dados.infoComplementar) {
         dados.infoComplementar.split('\n').forEach(line => {
@@ -398,7 +388,7 @@ function montarCurriculo(dados) {
         <div class="curriculo-preview fade-in">
             <div class="curriculo-header">
                 <div class="curriculo-foto">
-                    ${dados.foto ? `<img src="${dados.foto}" alt="Foto">` : '<img src="assets/avatar.png" alt="Avatar">'}
+                    ${dados.foto ? `<img src="${dados.foto}" alt="Foto">` : '<img src="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="50" fill="%23e5e7eb"/%3E%3Ccircle cx="50" cy="35" r="18" fill="%239ca3af"/%3E%3Ccircle cx="50" cy="85" r="28" fill="%239ca3af"/%3E%3C/svg%3E" alt="Avatar">'}
                 </div>
                 <div>
                     <h2 class="curriculo-nome">${dados.nome}</h2>
@@ -492,14 +482,14 @@ function formatarData(data) {
 document.getElementById('btnGerar').addEventListener('click', gerarCurriculo);
 
 // ======================================== //
-// 11. BAIXAR PDF                          //
+// 11. BAIXAR PDF - CORRIGIDO!              //
 // ======================================== //
 
 document.getElementById('btnPDF').addEventListener('click', function() {
     const element = document.getElementById('curriculoPreview');
     const isEmpty = element.querySelector('.empty-state');
 
-    if (isEmpty || !element.innerHTML.trim()) {
+    if (isEmpty || !element.innerHTML.trim() || element.innerHTML.includes('Preencha o formulário')) {
         alert('⚠️ Gere o currículo primeiro antes de baixar o PDF!');
         return;
     }
@@ -513,12 +503,13 @@ document.getElementById('btnPDF').addEventListener('click', function() {
 
     html2pdf()
         .set({
-            margin: 10,
+            margin: [10, 10, 10, 10],
             filename: `${nome}.pdf`,
             image: { type: 'jpeg', quality: 0.98 },
             html2canvas: {
                 scale: 2,
                 useCORS: true,
+                allowTaint: true,
                 logging: false,
                 width: element.scrollWidth,
                 height: element.scrollHeight,
@@ -533,8 +524,11 @@ document.getElementById('btnPDF').addEventListener('click', function() {
             btn.innerHTML = textoOriginal;
             btn.disabled = false;
         })
-        .catch(() => {
-            alert('Erro ao gerar PDF. Tente usar a opção IMPRIMIR.');
+        .catch(function(error) {
+            console.error('Erro ao gerar PDF:', error);
+            if (confirm('Erro ao gerar PDF automaticamente. Deseja tentar imprimir e salvar como PDF manualmente?')) {
+                window.print();
+            }
             btn.innerHTML = textoOriginal;
             btn.disabled = false;
         });
@@ -548,7 +542,7 @@ document.getElementById('btnImprimir').addEventListener('click', function() {
     const element = document.getElementById('curriculoPreview');
     const isEmpty = element.querySelector('.empty-state');
 
-    if (isEmpty || !element.innerHTML.trim()) {
+    if (isEmpty || !element.innerHTML.trim() || element.innerHTML.includes('Preencha o formulário')) {
         alert('⚠️ Gere o currículo primeiro antes de imprimir!');
         return;
     }
@@ -563,23 +557,19 @@ document.getElementById('btnImprimir').addEventListener('click', function() {
 document.getElementById('btnLimpar').addEventListener('click', function() {
     if (!confirm('Tem certeza que quer limpar todos os campos?')) return;
 
-    // Limpar inputs
     document.querySelectorAll('input, textarea').forEach(campo => {
         campo.value = '';
     });
 
-    // Limpar foto
-    document.getElementById('fotoPreviewImg').src = 'assets/avatar.png';
+    document.getElementById('fotoPreviewImg').src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="50" fill="%23e5e7eb"/%3E%3Ccircle cx="50" cy="35" r="18" fill="%239ca3af"/%3E%3Ccircle cx="50" cy="85" r="28" fill="%239ca3af"/%3E%3C/svg%3E';
     document.getElementById('fotoInput').value = '';
     fotoBase64 = null;
 
-    // Limpar tags
     document.getElementById('habilidadesContainer').innerHTML = '';
     document.getElementById('idiomasContainer').innerHTML = '';
     habilidades.length = 0;
     idiomas.length = 0;
 
-    // Limpar experiências, formações e cursos (deixar só o primeiro)
     const expContainer = document.getElementById('experienciasContainer');
     expContainer.innerHTML = `
         <div class="experiencia-item">
@@ -614,7 +604,6 @@ document.getElementById('btnLimpar').addEventListener('click', function() {
         </div>
     `;
 
-    // Limpar prévia
     document.getElementById('curriculoPreview').innerHTML = `
         <div class="empty-state">
             <i class="bi bi-file-earmark-text" style="font-size: 48px; color: #ccc;"></i>
@@ -623,9 +612,7 @@ document.getElementById('btnLimpar').addEventListener('click', function() {
     `;
     document.getElementById('previewBadge').style.display = 'none';
 
-    // Limpar LocalStorage
     localStorage.removeItem('curriculoEpt');
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
@@ -640,7 +627,6 @@ function carregarLocalStorage() {
     const dados = JSON.parse(dadosSalvos);
     if (!dados || !dados.nome) return;
 
-    // Preencher campos simples
     document.getElementById('nome').value = dados.nome || '';
     document.getElementById('email').value = dados.email || '';
     document.getElementById('telefone').value = dados.telefone || '';
@@ -659,23 +645,16 @@ function carregarLocalStorage() {
         document.getElementById('estado').value = dados.endereco.estado || '';
     }
 
-    // Foto
     if (dados.foto) {
         fotoBase64 = dados.foto;
         document.getElementById('fotoPreviewImg').src = fotoBase64;
     }
 
-    // Habilidades
     if (dados.habilidades && dados.habilidades.length > 0) {
         const container = document.getElementById('habilidadesContainer');
-        dados.habilidades.forEach(h => {
-            habilidades.push(h);
-        });
+        dados.habilidades.forEach(h => habilidades.push(h));
         container.innerHTML = dados.habilidades.map((tag, index) =>
-            `<span class="tag">
-                ${tag}
-                <span class="remove-tag" data-index="${index}">✕</span>
-            </span>`
+            `<span class="tag">${tag}<span class="remove-tag" data-index="${index}">✕</span></span>`
         ).join('');
         container.querySelectorAll('.remove-tag').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -689,10 +668,7 @@ function carregarLocalStorage() {
     function renderTagsHabilidades() {
         const container = document.getElementById('habilidadesContainer');
         container.innerHTML = habilidades.map((tag, index) =>
-            `<span class="tag">
-                ${tag}
-                <span class="remove-tag" data-index="${index}">✕</span>
-            </span>`
+            `<span class="tag">${tag}<span class="remove-tag" data-index="${index}">✕</span></span>`
         ).join('');
         container.querySelectorAll('.remove-tag').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -703,17 +679,11 @@ function carregarLocalStorage() {
         });
     }
 
-    // Idiomas
     if (dados.idiomas && dados.idiomas.length > 0) {
         const container = document.getElementById('idiomasContainer');
-        dados.idiomas.forEach(i => {
-            idiomas.push(i);
-        });
+        dados.idiomas.forEach(i => idiomas.push(i));
         container.innerHTML = dados.idiomas.map((tag, index) =>
-            `<span class="tag">
-                ${tag}
-                <span class="remove-tag" data-index="${index}">✕</span>
-            </span>`
+            `<span class="tag">${tag}<span class="remove-tag" data-index="${index}">✕</span></span>`
         ).join('');
         container.querySelectorAll('.remove-tag').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -727,10 +697,7 @@ function carregarLocalStorage() {
     function renderTagsIdiomas() {
         const container = document.getElementById('idiomasContainer');
         container.innerHTML = idiomas.map((tag, index) =>
-            `<span class="tag">
-                ${tag}
-                <span class="remove-tag" data-index="${index}">✕</span>
-            </span>`
+            `<span class="tag">${tag}<span class="remove-tag" data-index="${index}">✕</span></span>`
         ).join('');
         container.querySelectorAll('.remove-tag').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -741,7 +708,6 @@ function carregarLocalStorage() {
         });
     }
 
-    // Experiências
     if (dados.experiencias && dados.experiencias.length > 0) {
         const container = document.getElementById('experienciasContainer');
         container.innerHTML = '';
@@ -765,7 +731,6 @@ function carregarLocalStorage() {
         });
     }
 
-    // Formações
     if (dados.formacoes && dados.formacoes.length > 0) {
         const container = document.getElementById('formacoesContainer');
         container.innerHTML = '';
@@ -787,7 +752,6 @@ function carregarLocalStorage() {
         });
     }
 
-    // Cursos
     if (dados.cursos && dados.cursos.length > 0) {
         const container = document.getElementById('cursosContainer');
         container.innerHTML = '';
@@ -809,12 +773,7 @@ function carregarLocalStorage() {
     }
 }
 
-// Carregar dados salvos ao iniciar
 document.addEventListener('DOMContentLoaded', carregarLocalStorage);
-
-// ======================================== //
-// 15. CONSOLE LOG                         //
-// ======================================== //
 
 console.log('📄 E.P.T Conecta - Gerador de Currículo');
 console.log('✨ Desenvolvido com 💜 para você!');
