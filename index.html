@@ -5,12 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EPT Conecta - Gerador de Currículo</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- HEADER COM LOGO -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">EPT <strong>Conecta</strong></span>
+            </div>
+            <p class="header-subtitle">Crie seu currículo profissional em minutos</p>
+        </div>
+        <div class="header-divider"></div>
+    </header>
+
     <div class="container">
-        <h1>📄 EPT Conecta</h1>
-        <p class="subtitulo">Preencha os dados e gere seu currículo profissional</p>
-        
         <!-- FORMULÁRIO -->
         <div class="formulario">
             <div class="campo">
@@ -23,15 +33,9 @@
                 <input type="text" id="nome" placeholder="Ex: João Silva Santos">
             </div>
             
-            <div class="campo-linha">
-                <div class="campo">
-                    <label>📅 Idade *</label>
-                    <input type="number" id="idade" placeholder="25">
-                </div>
-                <div class="campo">
-                    <label>📍 Cidade/UF *</label>
-                    <input type="text" id="cidade" placeholder="São Paulo - SP">
-                </div>
+            <div class="campo">
+                <label>📅 Idade *</label>
+                <input type="number" id="idade" placeholder="25">
             </div>
             
             <div class="campo">
@@ -43,10 +47,39 @@
                 <label>📱 Telefone *</label>
                 <input type="tel" id="telefone" placeholder="(11) 99999-9999">
             </div>
+
+            <!-- ENDEREÇO COMPLETO -->
+            <div class="campo">
+                <label>📍 Endereço</label>
+            </div>
+            <div class="campo-linha">
+                <div class="campo">
+                    <label>Rua *</label>
+                    <input type="text" id="rua" placeholder="Ex: Rua das Flores">
+                </div>
+                <div class="campo">
+                    <label>Número *</label>
+                    <input type="text" id="numero" placeholder="123">
+                </div>
+            </div>
+            <div class="campo-linha">
+                <div class="campo">
+                    <label>Bairro *</label>
+                    <input type="text" id="bairro" placeholder="Ex: Centro">
+                </div>
+                <div class="campo">
+                    <label>Cidade *</label>
+                    <input type="text" id="cidade" placeholder="São Paulo">
+                </div>
+            </div>
+            <div class="campo">
+                <label>Estado/UF *</label>
+                <input type="text" id="estado" placeholder="SP">
+            </div>
             
             <div class="campo">
                 <label>💬 Sobre Mim</label>
-                <textarea id="sobre" rows="4" placeholder="Fale um pouco sobre você..."></textarea>
+                <textarea id="sobre" rows="4" placeholder="Fale um pouco sobre você, suas qualidades, perfil profissional, etc..."></textarea>
             </div>
             
             <div class="campo">
@@ -68,10 +101,21 @@
                 <label>🎓 Formação Acadêmica</label>
                 <textarea id="formacao" rows="2" placeholder="Ex: Bacharel em Ciência da Computação - USP (2016-2020)"></textarea>
             </div>
+
+            <!-- NOVO CAMPO: CURSOS COMPLEMENTARES -->
+            <div class="campo">
+                <label>📚 Cursos Complementares</label>
+                <textarea id="cursos" rows="3" placeholder="Ex: Informática Básica (Pacote Office)&#10;Atendimento ao Cliente&#10;Comunicação e Trabalho em Equipe"></textarea>
+            </div>
             
             <div class="campo">
                 <label>🌟 Hobbies/Interesses</label>
                 <input type="text" id="hobbies" placeholder="Leitura, Música, Esportes">
+            </div>
+
+            <div class="campo">
+                <label>📌 Informações Complementares</label>
+                <textarea id="info_complementar" rows="3" placeholder="Ex: Disponibilidade para estágio&#10;Comprometimento e pontualidade&#10;Facilidade em lidar com o público"></textarea>
             </div>
             
             <div class="botoes">
@@ -83,7 +127,6 @@
         <!-- PRÉVIA DO CURRÍCULO -->
         <div id="area-curriculo" style="display: none;">
             <h2>📋 Seu Currículo</h2>
-            <!-- Container específico para o PDF com estilo de impressão -->
             <div id="conteudo-pdf" class="pdf-container">
                 <div id="previa-curriculo" class="curriculo"></div>
             </div>
@@ -94,15 +137,15 @@
             </div>
         </div>
         
-        <footer></footer>
+        <footer>
+            <p>Seus dados não são salvos</p>
+        </footer>
     </div>
     
-    <!-- BIBLIOTECAS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
     </script>
-    
     <script src="script.js"></script>
 </body>
 </html>
