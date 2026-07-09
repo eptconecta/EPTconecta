@@ -482,7 +482,7 @@ function formatarData(data) {
 document.getElementById('btnGerar').addEventListener('click', gerarCurriculo);
 
 // ======================================== //
-// 11. BAIXAR PDF - CORRIGIDO!              //
+// 11. BAIXAR PDF - USA IMPRESSÃO!          //
 // ======================================== //
 
 document.getElementById('btnPDF').addEventListener('click', function() {
@@ -494,44 +494,8 @@ document.getElementById('btnPDF').addEventListener('click', function() {
         return;
     }
 
-    const btn = this;
-    const textoOriginal = btn.innerHTML;
-    btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Gerando...';
-    btn.disabled = true;
-
-    const nome = document.getElementById('nome').value.trim() || 'curriculo';
-
-    html2pdf()
-        .set({
-            margin: [10, 10, 10, 10],
-            filename: `${nome}.pdf`,
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: {
-                scale: 2,
-                useCORS: true,
-                allowTaint: true,
-                logging: false,
-                width: element.scrollWidth,
-                height: element.scrollHeight,
-                windowWidth: element.scrollWidth,
-                windowHeight: element.scrollHeight
-            },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        })
-        .from(element)
-        .save()
-        .then(() => {
-            btn.innerHTML = textoOriginal;
-            btn.disabled = false;
-        })
-        .catch(function(error) {
-            console.error('Erro ao gerar PDF:', error);
-            if (confirm('Erro ao gerar PDF automaticamente. Deseja tentar imprimir e salvar como PDF manualmente?')) {
-                window.print();
-            }
-            btn.innerHTML = textoOriginal;
-            btn.disabled = false;
-        });
+    // Abre a impressão - o usuário escolhe "Salvar como PDF"
+    window.print();
 });
 
 // ======================================== //
