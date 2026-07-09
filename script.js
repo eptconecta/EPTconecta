@@ -20,38 +20,62 @@ document.getElementById('foto').addEventListener('change', function(e) {
 // FUNÇÃO PRINCIPAL - GERAR CURRÍCULO
 // ========================================
 function gerarCurriculo() {
+    // PEGAR TODOS OS DADOS
     const nome = document.getElementById('nome').value.trim();
     const idade = document.getElementById('idade').value.trim();
-    const cidade = document.getElementById('cidade').value.trim();
     const email = document.getElementById('email').value.trim();
     const telefone = document.getElementById('telefone').value.trim();
+    const rua = document.getElementById('rua').value.trim();
+    const numero = document.getElementById('numero').value.trim();
+    const bairro = document.getElementById('bairro').value.trim();
+    const cidade = document.getElementById('cidade').value.trim();
+    const estado = document.getElementById('estado').value.trim();
     const sobre = document.getElementById('sobre').value.trim();
     const objetivo = document.getElementById('objetivo').value.trim();
     const habilidades = document.getElementById('habilidades').value.trim();
     const experiencia = document.getElementById('experiencia').value.trim();
     const formacao = document.getElementById('formacao').value.trim();
+    const cursos = document.getElementById('cursos').value.trim();
     const hobbies = document.getElementById('hobbies').value.trim();
+    const infoComplementar = document.getElementById('info_complementar').value.trim();
 
-    if (!nome || !idade || !cidade || !email || !telefone) {
-        alert('⚠️ Por favor, preencha os campos obrigatórios: Nome, Idade, Cidade, E-mail e Telefone');
+    // VALIDAR CAMPOS OBRIGATÓRIOS
+    if (!nome || !idade || !email || !telefone || !rua || !numero || !bairro || !cidade || !estado) {
+        alert('⚠️ Por favor, preencha todos os campos obrigatórios!');
         return;
     }
 
+    // MONTAR ENDEREÇO COMPLETO
+    const enderecoCompleto = `${rua}, ${numero}, ${bairro}, ${cidade}/${estado}`;
+
+    // ========================================
+    // MONTAR O HTML DO CURRÍCULO
+    // ========================================
     let html = `
         <div class="foto">
             ${fotoBase64 ? `<img src="${fotoBase64}" alt="Foto de ${nome}">` : ''}
         </div>
         
-        <h1>${nome}</h1>
+        <div class="nome-principal">${nome}</div>
         
-        <div class="info-pessoal">
-            <p><strong>Idade:</strong> ${idade} anos</p>
-            <p><strong>Cidade:</strong> ${cidade}</p>
-            <p><strong>E-mail:</strong> ${email}</p>
-            <p><strong>Telefone:</strong> ${telefone}</p>
+        <div class="contato-grid">
+            <span>📧 ${email}</span>
+            <span>📱 ${telefone}</span>
+            <span>📍 ${enderecoCompleto}</span>
         </div>
     `;
 
+    // OBJETIVO
+    if (objetivo) {
+        html += `
+            <div class="secao">
+                <h2>🎯 Objetivo</h2>
+                <p>${objetivo}</p>
+            </div>
+        `;
+    }
+
+    // SOBRE MIM
     if (sobre) {
         html += `
             <div class="secao">
@@ -63,15 +87,27 @@ function gerarCurriculo() {
         `;
     }
 
-    if (objetivo) {
+    // FORMAÇÃO ACADÊMICA
+    if (formacao) {
         html += `
             <div class="secao">
-                <h2>🎯 Objetivo</h2>
-                <p>${objetivo}</p>
+                <h2>🎓 Formação Acadêmica</h2>
+                <p>${formacao}</p>
             </div>
         `;
     }
 
+    // EXPERIÊNCIA PROFISSIONAL
+    if (experiencia) {
+        html += `
+            <div class="secao">
+                <h2>💼 Experiência Profissional</h2>
+                <p>${experiencia}</p>
+            </div>
+        `;
+    }
+
+    // HABILIDADES
     if (habilidades) {
         const listaHabilidades = habilidades.split(',').map(h => h.trim()).filter(h => h);
         html += `
@@ -84,24 +120,20 @@ function gerarCurriculo() {
         `;
     }
 
-    if (experiencia) {
+    // CURSOS COMPLEMENTARES
+    if (cursos) {
+        const listaCursos = cursos.split('\n').filter(c => c.trim());
         html += `
             <div class="secao">
-                <h2>💼 Experiência Profissional</h2>
-                <p>${experiencia}</p>
+                <h2>📚 Cursos Complementares</h2>
+                <ul class="cursos-lista">
+                    ${listaCursos.map(c => `<li>${c.trim()}</li>`).join('')}
+                </ul>
             </div>
         `;
     }
 
-    if (formacao) {
-        html += `
-            <div class="secao">
-                <h2>🎓 Formação Acadêmica</h2>
-                <p>${formacao}</p>
-            </div>
-        `;
-    }
-
+    // HOBBIES
     if (hobbies) {
         html += `
             <div class="secao">
@@ -111,6 +143,20 @@ function gerarCurriculo() {
         `;
     }
 
+    // INFORMAÇÕES COMPLEMENTARES
+    if (infoComplementar) {
+        const listaInfo = infoComplementar.split('\n').filter(i => i.trim());
+        html += `
+            <div class="secao">
+                <h2>📌 Informações Complementares</h2>
+                <div class="info-lista">
+                    ${listaInfo.map(i => `<span>${i.trim()}</span>`).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    // INSERIR NO HTML
     document.getElementById('previa-curriculo').innerHTML = html;
     document.getElementById('area-curriculo').style.display = 'block';
     document.getElementById('area-curriculo').scrollIntoView({ behavior: 'smooth' });
@@ -132,7 +178,7 @@ function limparCampos() {
 }
 
 // ========================================
-// FUNÇÃO PARA BAIXAR PDF - USANDO IMPRESSÃO!
+// FUNÇÃO PARA BAIXAR PDF
 // ========================================
 function baixarPDF() {
     const element = document.getElementById('previa-curriculo');
@@ -142,15 +188,12 @@ function baixarPDF() {
         return;
     }
 
-    // Abrir a janela de impressão com "Salvar como PDF" já selecionado
     const btn = document.querySelector('.btn-pdf');
     const textoOriginal = btn.textContent;
     btn.textContent = '⏳ Preparando PDF...';
     btn.disabled = true;
 
-    // Pequeno delay para mostrar o loading
     setTimeout(() => {
-        // Usar a função de impressão que já funciona perfeitamente
         window.print();
         btn.textContent = textoOriginal;
         btn.disabled = false;
