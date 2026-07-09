@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EPT Conecta - Gerador de Currículo</title>
+    <title>E.P.T Conecta - Gerador de Currículo</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- HEADER COM LOGO -->
+    <!-- HEADER COM LOGO E.P.T CONECTA -->
     <header class="header">
         <div class="header-content">
             <div class="logo">
-                <span class="logo-icon">🚀</span>
-                <span class="logo-text">EPT <strong>Conecta</strong></span>
+                <svg class="logo-svg" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="30" cy="30" r="28" stroke="#FCD34D" stroke-width="3"/>
+                    <path d="M20 20L40 40M20 40L40 20" stroke="#FCD34D" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="30" cy="30" r="8" fill="#FCD34D" opacity="0.9"/>
+                    <path d="M30 18V42M18 30H42" stroke="#FCD34D" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span class="logo-text">E.P.T <strong>Conecta</strong></span>
             </div>
-            <p class="header-subtitle">Crie seu currículo profissional em minutos</p>
+            <p class="header-subtitle">✨ Crie seu currículo profissional em minutos</p>
         </div>
         <div class="header-divider"></div>
     </header>
@@ -79,7 +84,7 @@
             
             <div class="campo">
                 <label>💬 Sobre Mim</label>
-                <textarea id="sobre" rows="4" placeholder="Fale um pouco sobre você, suas qualidades, perfil profissional, etc..."></textarea>
+                <textarea id="sobre" rows="4" placeholder="Fale um pouco sobre você..."></textarea>
             </div>
             
             <div class="campo">
@@ -102,10 +107,9 @@
                 <textarea id="formacao" rows="2" placeholder="Ex: Bacharel em Ciência da Computação - USP (2016-2020)"></textarea>
             </div>
 
-            <!-- NOVO CAMPO: CURSOS COMPLEMENTARES -->
             <div class="campo">
                 <label>📚 Cursos Complementares</label>
-                <textarea id="cursos" rows="3" placeholder="Ex: Informática Básica (Pacote Office)&#10;Atendimento ao Cliente&#10;Comunicação e Trabalho em Equipe"></textarea>
+                <textarea id="cursos" rows="3" placeholder="Ex: Informática Básica (Pacote Office)&#10;Atendimento ao Cliente"></textarea>
             </div>
             
             <div class="campo">
@@ -115,12 +119,16 @@
 
             <div class="campo">
                 <label>📌 Informações Complementares</label>
-                <textarea id="info_complementar" rows="3" placeholder="Ex: Disponibilidade para estágio&#10;Comprometimento e pontualidade&#10;Facilidade em lidar com o público"></textarea>
+                <textarea id="info_complementar" rows="3" placeholder="Ex: Disponibilidade para estágio&#10;Comprometimento e pontualidade"></textarea>
             </div>
             
             <div class="botoes">
-                <button onclick="gerarCurriculo()" class="btn-gerar">📄 GERAR CURRÍCULO</button>
-                <button onclick="limparCampos()" class="btn-limpar">🗑️ LIMPAR</button>
+                <button onclick="gerarCurriculo()" class="btn-gerar">
+                    <span class="btn-icon">📄</span> GERAR CURRÍCULO
+                </button>
+                <button onclick="limparCampos()" class="btn-limpar">
+                    <span class="btn-icon">🗑️</span> LIMPAR
+                </button>
             </div>
         </div>
         
@@ -132,13 +140,17 @@
             </div>
             
             <div class="botoes">
-                <button onclick="baixarPDF()" class="btn-pdf">💾 BAIXAR PDF</button>
-                <button onclick="imprimir()" class="btn-imprimir">🖨️ IMPRIMIR</button>
+                <button onclick="baixarPDF()" class="btn-pdf">
+                    <span class="btn-icon">💾</span> BAIXAR PDF
+                </button>
+                <button onclick="imprimir()" class="btn-imprimir">
+                    <span class="btn-icon">🖨️</span> IMPRIMIR
+                </button>
             </div>
         </div>
         
         <footer>
-            <p>Seus dados não são salvos</p>
+            <p>Seus dados não são salvos • E.P.T Conecta</p>
         </footer>
     </div>
     
