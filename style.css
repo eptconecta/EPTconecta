@@ -1,3 +1,6 @@
+/* ======================================== */
+/* GERAL */
+/* ======================================== */
 * {
     margin: 0;
     padding: 0;
@@ -5,482 +8,874 @@
 }
 
 body {
-    font-family: 'Poppins', Arial, sans-serif;
-    background: linear-gradient(135deg, #f5f0ff 0%, #ede9fe 30%, #f3e8ff 60%, #fce7f3 100%);
+    font-family: 'Poppins', sans-serif;
+    background: #f7f7f7;
+    color: #1a0a2e;
     min-height: 100vh;
-    padding: 20px;
 }
 
+/* ======================================== */
+/* HEADER */
+/* ======================================== */
 .header {
-    background: linear-gradient(135deg, #1a0a2e 0%, #4c1d6e 30%, #6C1B8C 55%, #8B2FC9 75%, #A855F7 100%);
-    padding: 35px 30px 20px;
-    border-radius: 25px 25px 0 0;
-    max-width: 950px;
-    margin: 0 auto;
-    box-shadow: 0 12px 40px rgba(108, 27, 140, 0.4);
+    background: linear-gradient(135deg, #1a0a2e 0%, #6c1b8c 50%, #a855f7 100%);
+    padding: 30px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: rgba(252, 211, 77, 0.05);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: rgba(168, 85, 247, 0.05);
+    border-radius: 50%;
+    pointer-events: none;
 }
 
 .header-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
+    z-index: 1;
     text-align: center;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 18px;
-    margin-bottom: 8px;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 5px;
 }
 
 .logo-svg {
-    width: 58px;
-    height: 58px;
-    filter: drop-shadow(0 4px 25px rgba(252, 211, 77, 0.4));
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(0 4px 20px rgba(252, 211, 77, 0.3));
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 .logo-text {
-    font-size: 42px;
+    font-size: 32px;
     font-weight: 300;
     color: #ffffff;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
 }
 
 .logo-text strong {
     font-weight: 900;
-    color: #FCD34D;
+    color: #fcd34d;
 }
 
 .header-subtitle {
-    color: rgba(255, 255, 255, 0.92);
-    font-size: 15px;
-    font-weight: 300;
-    letter-spacing: 4px;
-}
-
-.header-divider {
-    height: 4px;
-    background: linear-gradient(90deg, #FCD34D, #A855F7, #ec4899, #FCD34D);
-    margin-top: 18px;
-    border-radius: 3px;
-}
-
-.container {
-    max-width: 950px;
-    margin: 0 auto;
-    background: white;
-    padding: 40px 45px 35px;
-    border-radius: 0 0 25px 25px;
-    box-shadow: 0 25px 70px rgba(108, 27, 140, 0.15);
-}
-
-.formulario {
-    margin-bottom: 35px;
-}
-
-.campo {
-    margin-bottom: 18px;
-}
-
-.campo-linha {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-}
-
-label {
-    display: block;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 18px;
     font-weight: 600;
-    margin-bottom: 6px;
-    color: #4c1d6e;
-    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 2px;
 }
 
-input,
-textarea {
-    width: 100%;
-    padding: 14px 18px;
-    border: 2px solid #ede9fe;
-    border-radius: 14px;
+.header-description {
+    color: rgba(255, 255, 255, 0.7);
     font-size: 14px;
-    font-family: 'Poppins', Arial, sans-serif;
-    background: #faf8ff;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* ======================================== */
+/* CONTEÚDO PRINCIPAL */
+/* ======================================== */
+.main-content {
+    padding: 30px 0 60px;
+}
+
+/* ======================================== */
+/* CARDS */
+/* ======================================== */
+.form-card,
+.preview-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(26, 10, 46, 0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.form-card:hover,
+.preview-card:hover {
+    box-shadow: 0 15px 50px rgba(26, 10, 46, 0.12);
+}
+
+.form-title {
+    font-size: 22px;
+    font-weight: 700;
     color: #1a0a2e;
-}
-
-input:focus,
-textarea:focus {
-    border-color: #A855F7;
-    outline: none;
-    box-shadow: 0 0 0 5px rgba(168, 85, 247, 0.15);
-}
-
-textarea {
-    resize: vertical;
-    min-height: 60px;
-}
-
-.botoes {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #a855f7;
     display: flex;
-    gap: 15px;
-    margin-top: 30px;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-title i {
+    color: #a855f7;
+}
+
+/* ======================================== */
+/* SEÇÕES DO FORMULÁRIO */
+/* ======================================== */
+.form-section {
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #6c1b8c;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-title i {
+    color: #a855f7;
+}
+
+/* ======================================== */
+/* FOTO UPLOAD */
+/* ======================================== */
+.foto-upload {
+    display: flex;
+    align-items: center;
+    gap: 25px;
     flex-wrap: wrap;
 }
 
-button {
-    padding: 16px 36px;
-    border: none;
-    border-radius: 16px;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    font-family: 'Poppins', Arial, sans-serif;
-    flex: 1;
-    min-width: 160px;
+.foto-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid #a855f7;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #f0f0f0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    text-transform: uppercase;
+}
+
+.foto-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.foto-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ======================================== */
+/* BOTÕES */
+/* ======================================== */
+.btn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    border-radius: 12px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
 }
 
 .btn-gerar {
-    background: linear-gradient(135deg, #6C1B8C, #A855F7);
+    background: linear-gradient(135deg, #6c1b8c, #a855f7);
     color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
 }
 
 .btn-gerar:hover {
-    transform: scale(1.02);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(108, 27, 140, 0.35);
+    color: white;
+}
+
+.btn-pdf {
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+}
+
+.btn-pdf:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(22, 163, 74, 0.35);
+    color: white;
+}
+
+.btn-imprimir {
+    background: #6b7280;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+}
+
+.btn-imprimir:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(107, 114, 128, 0.35);
+    color: white;
 }
 
 .btn-limpar {
     background: #dc2626;
     color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
 }
 
 .btn-limpar:hover {
-    transform: scale(1.02);
-}
-
-.btn-pdf {
-    background: #16a34a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.35);
     color: white;
 }
 
-.btn-pdf:hover {
-    transform: scale(1.02);
-}
-
-.btn-imprimir {
-    background: #ea580c;
-    color: white;
-}
-
-.btn-imprimir:hover {
-    transform: scale(1.02);
-}
-
-#area-curriculo {
-    margin-top: 35px;
-    border-top: 3px solid #A855F7;
-    padding-top: 25px;
-}
-
-.previa-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-#area-curriculo h2 {
-    color: #4c1d6e;
-    font-size: 24px;
-    font-weight: 800;
-    margin: 0;
-}
-
-.previa-badge {
-    background: linear-gradient(135deg, #6C1B8C, #A855F7);
-    color: white;
-    padding: 6px 18px;
-    border-radius: 30px;
-    font-size: 12px;
+.btn-add {
+    background: transparent;
+    color: #6c1b8c;
+    border: 2px dashed #a855f7;
+    border-radius: 12px;
+    padding: 10px 20px;
     font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
 }
 
-.curriculo {
-    background: white;
-    padding: 45px 40px;
-    border: 2px solid #ede9fe;
-    border-radius: 18px;
-    min-height: 200px;
-    line-height: 1.8;
-    font-family: 'Poppins', Arial, sans-serif;
+.btn-add:hover {
+    background: #faf5ff;
+    border-color: #6c1b8c;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px solid #f0f0f0;
+}
+
+.form-actions .btn {
+    flex: 1;
+    min-width: 120px;
+    justify-content: center;
+}
+
+/* ======================================== */
+/* TAGS */
+/* ======================================== */
+.tags-input {
+    background: #faf8ff;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.tags-input:focus-within {
+    border-color: #a855f7;
+    box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1);
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+    min-height: 36px;
+}
+
+.tag {
+    background: linear-gradient(135deg, #6c1b8c, #a855f7);
+    color: white;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    animation: fadeInTag 0.3s ease;
+}
+
+@keyframes fadeInTag {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.tag .remove-tag {
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.tag .remove-tag:hover {
+    opacity: 1;
+}
+
+.tag-input {
+    border: none !important;
+    background: transparent !important;
+    padding: 8px 4px !important;
+    font-size: 14px !important;
+    box-shadow: none !important;
+}
+
+.tag-input:focus {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* ======================================== */
+/* PRÉVIA DO CURRÍCULO */
+/* ======================================== */
+.preview-container {
+    background: #faf8ff;
+    border-radius: 16px;
+    padding: 20px;
+    min-height: 500px;
+    overflow: auto;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    color: #999;
+}
+
+/* ======================================== */
+/* CURRÍCULO GERADO */
+/* ======================================== */
+.curriculo-preview {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 35px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     position: relative;
+    max-width: 100%;
 }
 
-.curriculo::after {
+/* Marca d'água */
+.curriculo-preview::after {
     content: "Gerado por E.P.T Conecta";
     position: absolute;
-    bottom: 18px;
+    bottom: 15px;
     right: 25px;
     font-size: 11px;
     color: rgba(108, 27, 140, 0.15);
     font-weight: 600;
-    letter-spacing: 1.5px;
-    transform: rotate(-4deg);
+    letter-spacing: 1px;
+    transform: rotate(-3deg);
+    pointer-events: none;
 }
 
-.curriculo .nome-principal {
-    font-size: 36px;
-    font-weight: 900;
-    color: #4c1d6e;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.curriculo .contato-grid {
+/* Cabeçalho do currículo */
+.curriculo-header {
     display: flex;
-    justify-content: center;
+    align-items: center;
     gap: 30px;
-    flex-wrap: wrap;
-    color: #555;
-    font-size: 14px;
     margin-bottom: 25px;
     padding-bottom: 20px;
-    border-bottom: 3px solid #A855F7;
+    border-bottom: 3px solid #a855f7;
 }
 
-.curriculo .contato-grid span {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.curriculo .secao {
-    margin-bottom: 20px;
-}
-
-.curriculo .secao h2 {
-    color: #4c1d6e;
-    font-size: 17px;
-    font-weight: 700;
-    border-bottom: 2px solid #A855F7;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.curriculo .secao h2::before {
-    content: "▶";
-    color: #A855F7;
-    font-size: 14px;
-}
-
-.curriculo .secao p {
-    margin-bottom: 4px;
-    color: #1a0a2e;
-    font-size: 13.5px;
-    line-height: 1.8;
-}
-
-.curriculo .secao ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.curriculo .secao ul li {
-    color: #1a0a2e;
-    font-size: 13.5px;
-    padding: 3px 0;
-    padding-left: 22px;
-    position: relative;
-}
-
-.curriculo .secao ul li::before {
-    content: "▸";
-    position: absolute;
-    left: 0;
-    color: #A855F7;
-}
-
-.curriculo .habilidades {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 5px;
-}
-
-.curriculo .habilidades span {
-    background: linear-gradient(135deg, #6C1B8C, #8B2FC9);
-    color: white;
-    padding: 5px 20px;
-    border-radius: 25px;
-    font-size: 12.5px;
-    font-weight: 600;
-}
-
-.curriculo .sobre-mim {
-    background: #faf8ff;
-    padding: 14px 20px;
-    border-radius: 12px;
-    border-left: 5px solid #A855F7;
-}
-
-.curriculo .sobre-mim p {
-    margin: 0;
-    font-size: 13.5px;
-}
-
-.curriculo .foto {
-    text-align: center;
-    margin-bottom: 18px;
-}
-
-.curriculo .foto img {
-    width: 140px;
-    height: 140px;
+.curriculo-foto {
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #A855F7;
+    border: 4px solid #a855f7;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #f0f0f0;
 }
 
-.curriculo .info-lista {
+.curriculo-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.curriculo-nome {
+    font-size: 28px;
+    font-weight: 900;
+    color: #1a0a2e;
+    margin: 0;
+}
+
+.curriculo-cargo {
+    font-size: 16px;
+    color: #6c1b8c;
+    font-weight: 500;
+    margin: 0;
+}
+
+.curriculo-contato {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px 25px;
+    gap: 15px 25px;
+    margin-top: 8px;
+    font-size: 14px;
+    color: #555;
 }
 
-.curriculo .info-lista span {
-    font-size: 13.5px;
-    color: #1a0a2e;
+.curriculo-contato span {
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-.curriculo .info-lista span::before {
-    content: "✦";
-    color: #A855F7;
+.curriculo-contato i {
+    color: #a855f7;
+    width: 18px;
 }
 
-.curriculo .cursos-lista li::before {
-    content: "📚";
+/* Conteúdo 2 colunas */
+.curriculo-body {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+}
+
+/* Coluna esquerda */
+.curriculo-col-esquerda {
+    border-right: 2px solid #f0f0f0;
+    padding-right: 25px;
+}
+
+/* Coluna direita */
+.curriculo-col-direita {
+    padding-left: 5px;
+}
+
+/* Seções do currículo */
+.curriculo-secao {
+    margin-bottom: 18px;
+}
+
+.curriculo-secao:last-child {
+    margin-bottom: 0;
+}
+
+.curriculo-secao h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #6c1b8c;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+    border-bottom: 2px solid #a855f7;
+    padding-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.curriculo-secao h4 i {
+    color: #a855f7;
+}
+
+.curriculo-secao p {
+    font-size: 13px;
+    color: #333;
+    margin-bottom: 3px;
+    line-height: 1.6;
+}
+
+.curriculo-secao ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.curriculo-secao ul li {
+    font-size: 13px;
+    color: #333;
+    padding: 2px 0;
+    padding-left: 18px;
+    position: relative;
+}
+
+.curriculo-secao ul li::before {
+    content: "▸";
     position: absolute;
     left: 0;
-    font-size: 13px;
+    color: #a855f7;
+    font-weight: bold;
 }
 
-footer {
-    text-align: center;
-    margin-top: 30px;
-    padding-top: 22px;
-    border-top: 2px solid #ede9fe;
-    color: #8B2FC9;
-    font-size: 13px;
+.tags-container-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.tags-container-preview .tag-preview {
+    background: linear-gradient(135deg, #6c1b8c, #a855f7);
+    color: white;
+    padding: 2px 14px;
+    border-radius: 20px;
+    font-size: 12px;
     font-weight: 500;
 }
 
-/* IMPRESSÃO - SIMPLES E DIRETA */
+/* Experiência e Formação */
+.exp-item,
+.form-item {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.exp-item:last-child,
+.form-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.exp-item strong,
+.form-item strong {
+    color: #1a0a2e;
+    font-weight: 600;
+}
+
+.exp-item .exp-periodo,
+.form-item .form-ano {
+    font-size: 12px;
+    color: #888;
+}
+
+/* ======================================== */
+/* PREVIEW BADGE */
+/* ======================================== */
+.preview-badge {
+    background: #dcfce7;
+    color: #16a34a;
+    padding: 10px 20px;
+    border-radius: 12px;
+    margin-top: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: fadeIn 0.5s ease;
+}
+
+/* ======================================== */
+/* ANIMAÇÕES */
+/* ======================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+/* ======================================== */
+/* IMPRESSÃO */
+/* ======================================== */
 @media print {
-    body {
-        background: white !important;
-        padding: 0 !important;
-        margin: 0 !important;
+    /* Esconde tudo que não é o currículo */
+    body * {
+        visibility: hidden;
     }
 
-    .header,
-    .formulario,
-    .botoes,
-    .previa-header,
-    .previa-badge,
-    #area-curriculo h2,
-    footer {
+    .curriculo-preview,
+    .curriculo-preview * {
+        visibility: visible !important;
+    }
+
+    .curriculo-preview {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        padding: 40px !important;
+        margin: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        width: 100% !important;
+        background: white !important;
+    }
+
+    .curriculo-preview::after {
         display: none !important;
     }
 
-    .container {
-        padding: 0 !important;
-        margin: 0 !important;
+    .preview-container {
         background: white !important;
-        box-shadow: none !important;
-        max-width: 100% !important;
-    }
-
-    #area-curriculo {
-        display: block !important;
-        border: none !important;
         padding: 0 !important;
-        margin: 0 !important;
+        min-height: auto !important;
     }
 
-    .curriculo {
-        border: none !important;
-        padding: 30px !important;
-        margin: 0 !important;
-        background: white !important;
+    .preview-card {
         box-shadow: none !important;
+        padding: 0 !important;
+        background: white !important;
     }
 
-    .curriculo::after {
+    .preview-badge,
+    .form-title {
         display: none !important;
     }
 
-    .curriculo .secao {
-        display: block !important;
+    .empty-state {
+        display: none !important;
     }
 
-    .curriculo .secao h2 {
+    .curriculo-body {
+        display: grid !important;
+        grid-template-columns: 1fr 2fr !important;
+        gap: 30px !important;
+    }
+
+    .curriculo-col-esquerda {
+        border-right: 2px solid #f0f0f0 !important;
+        padding-right: 25px !important;
+    }
+
+    .curriculo-header {
         display: flex !important;
+        align-items: center !important;
+        gap: 30px !important;
+        margin-bottom: 25px !important;
+        padding-bottom: 20px !important;
+        border-bottom: 3px solid #a855f7 !important;
     }
 
-    .curriculo .secao p {
-        display: block !important;
+    .curriculo-foto {
+        width: 120px !important;
+        height: 120px !important;
+        border-radius: 50% !important;
+        border: 4px solid #a855f7 !important;
+        overflow: hidden !important;
+        flex-shrink: 0 !important;
+        background: #f0f0f0 !important;
     }
 
-    .curriculo .secao ul {
-        display: block !important;
+    .curriculo-foto img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
     }
 
-    .curriculo .secao ul li {
-        display: block !important;
+    .curriculo-nome {
+        font-size: 28px !important;
+        font-weight: 900 !important;
+        color: #1a0a2e !important;
     }
 
-    .curriculo .habilidades {
+    .curriculo-contato {
         display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 15px 25px !important;
+        margin-top: 8px !important;
+        font-size: 14px !important;
+        color: #555 !important;
     }
 
-    .curriculo .habilidades span {
-        display: inline-block !important;
-        background: #6C1B8C !important;
+    .curriculo-secao {
+        margin-bottom: 18px !important;
+    }
+
+    .curriculo-secao h4 {
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        color: #6c1b8c !important;
+        text-transform: uppercase !important;
+        border-bottom: 2px solid #a855f7 !important;
+        padding-bottom: 4px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .curriculo-secao p {
+        font-size: 13px !important;
+        color: #333 !important;
+        line-height: 1.6 !important;
+    }
+
+    .curriculo-secao ul li {
+        font-size: 13px !important;
+        color: #333 !important;
+    }
+
+    .tags-container-preview .tag-preview {
+        background: #6c1b8c !important;
         color: white !important;
+        padding: 2px 14px !important;
+        border-radius: 20px !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
 
-    .curriculo .sobre-mim {
+    .curriculo-preview::after {
+        content: "Gerado por E.P.T Conecta" !important;
+        position: absolute !important;
+        bottom: 15px !important;
+        right: 25px !important;
+        font-size: 11px !important;
+        color: rgba(108, 27, 140, 0.15) !important;
+        font-weight: 600 !important;
+        letter-spacing: 1px !important;
+        transform: rotate(-3deg) !important;
+        pointer-events: none !important;
         display: block !important;
-        background: #faf8ff !important;
+        visibility: visible !important;
+    }
+}
+
+/* ======================================== */
+/* RESPONSIVIDADE */
+/* ======================================== */
+@media (max-width: 992px) {
+    .curriculo-body {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
     }
 
-    .curriculo .foto {
-        display: block !important;
+    .curriculo-col-esquerda {
+        border-right: none !important;
+        padding-right: 0 !important;
+        border-bottom: 2px solid #f0f0f0 !important;
+        padding-bottom: 20px !important;
     }
 
-    .curriculo .foto img {
-        display: inline-block !important;
+    .curriculo-col-direita {
+        padding-left: 0 !important;
     }
 
-    .curriculo .info-lista {
-        display: flex !important;
+    .form-card,
+    .preview-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo-text {
+        font-size: 24px;
     }
 
-    .curriculo .info-lista span {
-        display: inline-flex !important;
+    .header-subtitle {
+        font-size: 16px;
+    }
+
+    .curriculo-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .curriculo-contato {
+        justify-content: center;
+    }
+
+    .form-actions .btn {
+        min-width: 100%;
+    }
+
+    .curriculo-preview {
+        padding: 20px;
+    }
+
+    .foto-upload {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-content {
+        padding: 15px 0 30px;
+    }
+
+    .form-card,
+    .preview-card {
+        padding: 15px;
+    }
+
+    .curriculo-preview {
+        padding: 15px;
+    }
+
+    .curriculo-nome {
+        font-size: 22px;
+    }
+
+    .curriculo-foto {
+        width: 100px;
+        height: 100px;
+    }
+
+    .curriculo-contato {
+        font-size: 12px;
+        gap: 8px 15px;
     }
 }
