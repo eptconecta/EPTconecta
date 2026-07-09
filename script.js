@@ -49,110 +49,70 @@ function gerarCurriculo() {
     const enderecoCompleto = `${rua}, ${numero}, ${bairro}, ${cidade}/${estado}`;
 
     // ========================================
-    // MONTAR O HTML DO CURRÍCULO
-    // TODAS AS SEÇÕES SEMPRE APARECEM!
-    // ========================================
-    let html = `
-        <div class="foto">
-            ${fotoBase64 ? `<img src="${fotoBase64}" alt="Foto de ${nome}">` : ''}
-        </div>
-        
-        <div class="nome-principal">${nome}</div>
-        
-        <div class="contato-grid">
-            <span>✉ ${email}</span>
-            <span>📱 ${telefone}</span>
-            <span>📍 ${enderecoCompleto}</span>
-        </div>
-    `;
-
-    // ========================================
-    // TODAS AS SEÇÕES - FIXAS! SEMPRE APARECEM!
+    // PREENCHER AS SEÇÕES FIXAS DO CURRÍCULO
     // ========================================
 
-    // 1. OBJETIVO
-    html += `
-        <div class="secao">
-            <h2>Objetivo</h2>
-            <p>${objetivo || 'Não informado'}</p>
-        </div>
+    // FOTO
+    const fotoDiv = document.getElementById('foto-curriculo');
+    if (fotoBase64) {
+        fotoDiv.innerHTML = `<img src="${fotoBase64}" alt="Foto de ${nome}">`;
+    } else {
+        fotoDiv.innerHTML = '';
+    }
+
+    // NOME
+    document.getElementById('nome-curriculo').textContent = nome;
+
+    // CONTATO
+    document.getElementById('contato-curriculo').innerHTML = `
+        <span>✉ ${email}</span>
+        <span>📱 ${telefone}</span>
+        <span>📍 ${enderecoCompleto}</span>
     `;
 
-    // 2. SOBRE MIM
-    html += `
-        <div class="secao">
-            <h2>Sobre Mim</h2>
-            <div class="sobre-mim">
-                <p>${sobre || 'Não informado'}</p>
-            </div>
-        </div>
-    `;
+    // OBJETIVO
+    document.getElementById('objetivo-curriculo').textContent = objetivo || 'Não informado';
 
-    // 3. FORMAÇÃO ACADÊMICA
-    html += `
-        <div class="secao">
-            <h2>Formação Acadêmica</h2>
-            <p>${formacao || 'Não informado'}</p>
-        </div>
-    `;
+    // SOBRE MIM
+    document.getElementById('sobre-curriculo').textContent = sobre || 'Não informado';
 
-    // 4. EXPERIÊNCIA PROFISSIONAL
-    html += `
-        <div class="secao">
-            <h2>Experiência Profissional</h2>
-            <p>${experiencia || 'Não informado'}</p>
-        </div>
-    `;
+    // FORMAÇÃO ACADÊMICA
+    document.getElementById('formacao-curriculo').textContent = formacao || 'Não informado';
 
-    // 5. HABILIDADES
+    // EXPERIÊNCIA PROFISSIONAL
+    document.getElementById('experiencia-curriculo').textContent = experiencia || 'Não informado';
+
+    // HABILIDADES
+    const habilidadesDiv = document.getElementById('habilidades-curriculo');
     const listaHabilidades = habilidades ? habilidades.split(',').map(h => h.trim()).filter(h => h) : [];
-    html += `
-        <div class="secao">
-            <h2>Habilidades</h2>
-            <div class="habilidades">
-                ${listaHabilidades.length > 0 
-                    ? listaHabilidades.map(h => `<span>${h}</span>`).join('') 
-                    : '<span style="background:#e5e7eb;color:#666;">Nenhuma habilidade informada</span>'}
-            </div>
-        </div>
-    `;
+    if (listaHabilidades.length > 0) {
+        habilidadesDiv.innerHTML = listaHabilidades.map(h => `<span>${h}</span>`).join('');
+    } else {
+        habilidadesDiv.innerHTML = '<span style="background:#e5e7eb;color:#666;">Nenhuma habilidade informada</span>';
+    }
 
-    // 6. CURSOS COMPLEMENTARES
+    // CURSOS COMPLEMENTARES
+    const cursosUl = document.getElementById('cursos-curriculo');
     const listaCursos = cursos ? cursos.split('\n').filter(c => c.trim()) : [];
-    html += `
-        <div class="secao">
-            <h2>Cursos Complementares</h2>
-            <ul class="cursos-lista">
-                ${listaCursos.length > 0 
-                    ? listaCursos.map(c => `<li>${c.trim()}</li>`).join('') 
-                    : '<li style="color:#999;">Nenhum curso informado</li>'}
-            </ul>
-        </div>
-    `;
+    if (listaCursos.length > 0) {
+        cursosUl.innerHTML = listaCursos.map(c => `<li>${c.trim()}</li>`).join('');
+    } else {
+        cursosUl.innerHTML = '<li style="color:#999;">Nenhum curso informado</li>';
+    }
 
-    // 7. HOBBIES
-    html += `
-        <div class="secao">
-            <h2>Hobbies e Interesses</h2>
-            <p>${hobbies || 'Não informado'}</p>
-        </div>
-    `;
+    // HOBBIES
+    document.getElementById('hobbies-curriculo').textContent = hobbies || 'Não informado';
 
-    // 8. INFORMAÇÕES COMPLEMENTARES
+    // INFORMAÇÕES COMPLEMENTARES
+    const infoDiv = document.getElementById('info-curriculo');
     const listaInfo = infoComplementar ? infoComplementar.split('\n').filter(i => i.trim()) : [];
-    html += `
-        <div class="secao">
-            <h2>Informações Complementares</h2>
-            <div class="info-lista">
-                ${listaInfo.length > 0 
-                    ? listaInfo.map(i => `<span>${i.trim()}</span>`).join('') 
-                    : '<span style="color:#999;">Nenhuma informação complementar</span>'}
-            </div>
-        </div>
-    `;
+    if (listaInfo.length > 0) {
+        infoDiv.innerHTML = listaInfo.map(i => `<span>${i.trim()}</span>`).join('');
+    } else {
+        infoDiv.innerHTML = '<span style="color:#999;">Nenhuma informação complementar</span>';
+    }
 
-    // INSERIR NO HTML
-    document.getElementById('previa-curriculo').innerHTML = html;
+    // MOSTRAR O CURRÍCULO
     document.getElementById('area-curriculo').style.display = 'block';
     document.getElementById('area-curriculo').scrollIntoView({ behavior: 'smooth' });
 }
