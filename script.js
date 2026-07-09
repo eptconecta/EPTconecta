@@ -6,7 +6,6 @@
 // 1. MÁSCARAS                             //
 // ======================================== //
 
-// CPF
 document.getElementById('cpf').addEventListener('input', function(e) {
     let value = e.target.value.replace(/\D/g, '');
     if (value.length <= 11) {
@@ -17,7 +16,6 @@ document.getElementById('cpf').addEventListener('input', function(e) {
     }
 });
 
-// Telefone
 document.getElementById('telefone').addEventListener('input', function(e) {
     let value = e.target.value.replace(/\D/g, '');
     if (value.length <= 11) {
@@ -27,7 +25,6 @@ document.getElementById('telefone').addEventListener('input', function(e) {
     }
 });
 
-// CEP
 document.getElementById('cep').addEventListener('input', function(e) {
     let value = e.target.value.replace(/\D/g, '');
     if (value.length <= 8) {
@@ -40,7 +37,7 @@ document.getElementById('cep').addEventListener('input', function(e) {
 });
 
 // ======================================== //
-// 2. VIACEP - BUSCAR ENDEREÇO             //
+// 2. VIACEP                               //
 // ======================================== //
 
 function buscarCep(cep) {
@@ -62,7 +59,7 @@ function buscarCep(cep) {
 }
 
 // ======================================== //
-// 3. DATA DE NASCIMENTO -> IDADE          //
+// 3. DATA -> IDADE                        //
 // ======================================== //
 
 document.getElementById('dataNascimento').addEventListener('change', function() {
@@ -103,7 +100,7 @@ document.getElementById('removerFoto').addEventListener('click', function() {
 });
 
 // ======================================== //
-// 5. TAGS (HABILIDADES E IDIOMAS)         //
+// 5. TAGS                                 //
 // ======================================== //
 
 function setupTags(inputId, containerId) {
