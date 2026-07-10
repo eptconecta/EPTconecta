@@ -632,13 +632,25 @@ body {
 }
 
 /* ======================================== */
-/* IMPRESSÃO */
+/* IMPRESSÃO - CORRIGIDO!                   */
 /* ======================================== */
 @media print {
-    body * {
-        visibility: hidden;
+    /* RESET COMPLETO PARA IMPRESSÃO */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
     }
 
+    /* ESCONDE TUDO QUE NÃO É O CURRÍCULO */
+    body * {
+        visibility: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        height: auto !important;
+    }
+
+    /* MOSTRA SÓ O CURRÍCULO */
     .curriculo-preview,
     .curriculo-preview * {
         visibility: visible !important;
@@ -648,125 +660,290 @@ body {
         position: absolute !important;
         top: 0 !important;
         left: 0 !important;
-        padding: 40px !important;
+        padding: 25px !important;
         margin: 0 !important;
         border: none !important;
         box-shadow: none !important;
         border-radius: 0 !important;
         width: 100% !important;
+        max-width: 100% !important;
         background: white !important;
+        overflow: hidden !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
     }
 
     .curriculo-preview::after {
         display: none !important;
     }
 
+    /* ESCONDE A PRÉVIA E O BADGE */
     .preview-container {
         background: white !important;
         padding: 0 !important;
         min-height: auto !important;
+        margin: 0 !important;
     }
 
     .preview-card {
         box-shadow: none !important;
         padding: 0 !important;
         background: white !important;
+        margin: 0 !important;
     }
 
     .preview-badge,
-    .form-title {
-        display: none !important;
-    }
-
+    .form-title,
     .empty-state {
         display: none !important;
     }
 
-    .curriculo-body {
-        display: grid !important;
-        grid-template-columns: 1fr 2fr !important;
-        gap: 30px !important;
-    }
-
-    .curriculo-col-esquerda {
-        border-right: 2px solid #f0f0f0 !important;
-        padding-right: 25px !important;
-    }
-
-    .curriculo-header {
+    /* ======================================== */
+    /* CURRÍCULO - AJUSTADO PARA UMA PÁGINA   */
+    /* ======================================== */
+    .curriculo-preview .curriculo-header {
         display: flex !important;
         align-items: center !important;
-        gap: 30px !important;
-        margin-bottom: 25px !important;
-        padding-bottom: 20px !important;
-        border-bottom: 3px solid #a855f7 !important;
+        gap: 20px !important;
+        margin-bottom: 15px !important;
+        padding-bottom: 12px !important;
+        border-bottom: 2px solid #a855f7 !important;
     }
 
-    .curriculo-foto {
-        width: 120px !important;
-        height: 120px !important;
+    .curriculo-preview .curriculo-foto {
+        width: 80px !important;
+        height: 80px !important;
         border-radius: 50% !important;
-        border: 4px solid #a855f7 !important;
+        border: 3px solid #a855f7 !important;
         overflow: hidden !important;
         flex-shrink: 0 !important;
         background: #f0f0f0 !important;
     }
 
-    .curriculo-foto img {
+    .curriculo-preview .curriculo-foto img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important;
     }
 
-    .curriculo-nome {
-        font-size: 28px !important;
+    .curriculo-preview .curriculo-nome {
+        font-size: 22px !important;
         font-weight: 900 !important;
         color: #1a0a2e !important;
+        margin: 0 !important;
+        line-height: 1.2 !important;
     }
 
-    .curriculo-contato {
+    .curriculo-preview .curriculo-contato {
         display: flex !important;
         flex-wrap: wrap !important;
-        gap: 15px 25px !important;
-        margin-top: 8px !important;
-        font-size: 14px !important;
+        gap: 8px 18px !important;
+        margin-top: 4px !important;
+        font-size: 12px !important;
         color: #555 !important;
     }
 
-    .curriculo-secao {
-        margin-bottom: 18px !important;
+    .curriculo-preview .curriculo-contato span {
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+        font-size: 12px !important;
     }
 
-    .curriculo-secao h4 {
-        font-size: 14px !important;
+    .curriculo-preview .curriculo-contato i {
+        font-size: 12px !important;
+    }
+
+    /* BODY DO CURRÍCULO - 2 COLUNAS */
+    .curriculo-preview .curriculo-body {
+        display: grid !important;
+        grid-template-columns: 1fr 2fr !important;
+        gap: 20px !important;
+        margin-top: 5px !important;
+    }
+
+    .curriculo-preview .curriculo-col-esquerda {
+        border-right: 2px solid #f0f0f0 !important;
+        padding-right: 18px !important;
+    }
+
+    .curriculo-preview .curriculo-col-direita {
+        padding-left: 5px !important;
+    }
+
+    /* SEÇÕES DO CURRÍCULO - MAIS COMPACTAS */
+    .curriculo-preview .curriculo-secao {
+        margin-bottom: 10px !important;
+        page-break-inside: avoid !important;
+    }
+
+    .curriculo-preview .curriculo-secao:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    .curriculo-preview .curriculo-secao h4 {
+        font-size: 12px !important;
         font-weight: 700 !important;
         color: #6c1b8c !important;
         text-transform: uppercase !important;
-        border-bottom: 2px solid #a855f7 !important;
-        padding-bottom: 4px !important;
-        margin-bottom: 5px !important;
+        border-bottom: 1.5px solid #a855f7 !important;
+        padding-bottom: 2px !important;
+        margin-bottom: 4px !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+        letter-spacing: 0.3px !important;
     }
 
-    .curriculo-secao p {
-        font-size: 13px !important;
+    .curriculo-preview .curriculo-secao h4 i {
+        font-size: 11px !important;
+    }
+
+    .curriculo-preview .curriculo-secao p {
+        font-size: 11.5px !important;
         color: #333 !important;
-        line-height: 1.6 !important;
+        margin-bottom: 2px !important;
+        line-height: 1.4 !important;
     }
 
-    .curriculo-secao ul li {
-        font-size: 13px !important;
+    .curriculo-preview .curriculo-secao ul {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .curriculo-preview .curriculo-secao ul li {
+        font-size: 11.5px !important;
         color: #333 !important;
+        padding: 1px 0 !important;
+        padding-left: 15px !important;
+        position: relative !important;
+        line-height: 1.3 !important;
     }
 
-    .tags-container-preview .tag-preview {
+    .curriculo-preview .curriculo-secao ul li::before {
+        content: "▸" !important;
+        position: absolute !important;
+        left: 0 !important;
+        color: #a855f7 !important;
+        font-weight: bold !important;
+        font-size: 10px !important;
+    }
+
+    /* TAGS */
+    .curriculo-preview .tags-container-preview {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 4px !important;
+        margin-top: 2px !important;
+    }
+
+    .curriculo-preview .tags-container-preview .tag-preview {
         background: #6c1b8c !important;
         color: white !important;
-        padding: 2px 14px !important;
-        border-radius: 20px !important;
-        font-size: 12px !important;
+        padding: 1px 10px !important;
+        border-radius: 15px !important;
+        font-size: 10.5px !important;
         font-weight: 500 !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
+        display: inline-block !important;
+        line-height: 1.5 !important;
+    }
+
+    /* EXPERIÊNCIA E FORMAÇÃO - MAIS COMPACTAS */
+    .curriculo-preview .exp-item,
+    .curriculo-preview .form-item {
+        margin-bottom: 6px !important;
+        padding-bottom: 6px !important;
+        border-bottom: 1px solid #f0f0f0 !important;
+    }
+
+    .curriculo-preview .exp-item:last-child,
+    .curriculo-preview .form-item:last-child {
+        border-bottom: none !important;
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .curriculo-preview .exp-item strong,
+    .curriculo-preview .form-item strong {
+        font-size: 12px !important;
+        color: #1a0a2e !important;
+        font-weight: 600 !important;
+        display: block !important;
+    }
+
+    .curriculo-preview .exp-item div,
+    .curriculo-preview .form-item div {
+        font-size: 11px !important;
+        color: #555 !important;
+    }
+
+    .curriculo-preview .exp-item .exp-periodo,
+    .curriculo-preview .form-item .form-ano {
+        font-size: 10.5px !important;
+        color: #888 !important;
+    }
+
+    .curriculo-preview .exp-item p {
+        font-size: 10.5px !important;
+        margin-top: 2px !important;
+        line-height: 1.3 !important;
+        color: #444 !important;
+    }
+
+    /* SOBRE MIM */
+    .curriculo-preview .sobre-mim {
+        background: #faf8ff !important;
+        padding: 8px 12px !important;
+        border-radius: 8px !important;
+        border-left: 3px solid #a855f7 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .curriculo-preview .sobre-mim p {
+        font-size: 11.5px !important;
+        line-height: 1.4 !important;
+        margin: 0 !important;
+    }
+
+    /* REMOVE ESPAÇOS EXTRAS NO FINAL */
+    .curriculo-preview .curriculo-col-esquerda .curriculo-secao:last-child,
+    .curriculo-preview .curriculo-col-direita .curriculo-secao:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    /* GARANTE QUE SÓ UMA PÁGINA SEJA GERADA */
+    .curriculo-preview {
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: 100% !important;
+    }
+
+    .curriculo-preview .curriculo-body {
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    .curriculo-preview .curriculo-col-esquerda,
+    .curriculo-preview .curriculo-col-direita {
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    /* BORDA DA MARCA D'ÁGUA - REMOVE PARA ECONOMIZAR ESPAÇO */
+    .curriculo-preview::after {
+        display: none !important;
+    }
+
+    /* HEADER E FOOTER DO NAVEGADOR */
+    @page {
+        margin: 0.5cm !important;
+        size: A4 portrait !important;
     }
 }
 
