@@ -632,10 +632,11 @@ body {
 }
 
 /* ======================================== */
-/* IMPRESSÃO - CORRIGIDO!                   */
+/* IMPRESSÃO - CORRIGIDO */
 /* ======================================== */
 @media print {
-    /* RESET COMPLETO PARA IMPRESSÃO */
+
+    /* RESET */
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
@@ -643,32 +644,33 @@ body {
     }
 
     /* ESCONDE TUDO QUE NÃO É O CURRÍCULO */
-    body * {
-        visibility: hidden !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        height: auto !important;
+    .header,
+    .formulario,
+    .form-card,
+    .form-actions,
+    .form-title,
+    .preview-badge,
+    .preview-card .form-title,
+    .preview-card .preview-container,
+    .preview-card .preview-badge,
+    .preview-card .form-actions,
+    .footer,
+    .alert-info,
+    .botoes {
+        display: none !important;
     }
 
     /* MOSTRA SÓ O CURRÍCULO */
-    .curriculo-preview,
-    .curriculo-preview * {
-        visibility: visible !important;
-    }
-
     .curriculo-preview {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
+        display: block !important;
+        position: relative !important;
         padding: 25px !important;
-        margin: 0 !important;
+        margin: 0 auto !important;
         border: none !important;
         box-shadow: none !important;
         border-radius: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
         background: white !important;
-        overflow: hidden !important;
+        max-width: 100% !important;
         page-break-after: avoid !important;
         page-break-inside: avoid !important;
     }
@@ -677,30 +679,22 @@ body {
         display: none !important;
     }
 
-    /* ESCONDE A PRÉVIA E O BADGE */
-    .preview-container {
-        background: white !important;
-        padding: 0 !important;
-        min-height: auto !important;
-        margin: 0 !important;
-    }
-
     .preview-card {
         box-shadow: none !important;
         padding: 0 !important;
         background: white !important;
         margin: 0 !important;
+        border: none !important;
     }
 
-    .preview-badge,
-    .form-title,
-    .empty-state {
-        display: none !important;
+    .preview-container {
+        background: white !important;
+        padding: 0 !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        border: none !important;
     }
 
-    /* ======================================== */
-    /* CURRÍCULO - AJUSTADO PARA UMA PÁGINA   */
-    /* ======================================== */
     .curriculo-preview .curriculo-header {
         display: flex !important;
         align-items: center !important;
@@ -717,7 +711,6 @@ body {
         border: 3px solid #a855f7 !important;
         overflow: hidden !important;
         flex-shrink: 0 !important;
-        background: #f0f0f0 !important;
     }
 
     .curriculo-preview .curriculo-foto img {
@@ -750,11 +743,6 @@ body {
         font-size: 12px !important;
     }
 
-    .curriculo-preview .curriculo-contato i {
-        font-size: 12px !important;
-    }
-
-    /* BODY DO CURRÍCULO - 2 COLUNAS */
     .curriculo-preview .curriculo-body {
         display: grid !important;
         grid-template-columns: 1fr 2fr !important;
@@ -771,9 +759,8 @@ body {
         padding-left: 5px !important;
     }
 
-    /* SEÇÕES DO CURRÍCULO - MAIS COMPACTAS */
     .curriculo-preview .curriculo-secao {
-        margin-bottom: 10px !important;
+        margin-bottom: 8px !important;
         page-break-inside: avoid !important;
     }
 
@@ -788,11 +775,10 @@ body {
         text-transform: uppercase !important;
         border-bottom: 1.5px solid #a855f7 !important;
         padding-bottom: 2px !important;
-        margin-bottom: 4px !important;
+        margin-bottom: 3px !important;
         display: flex !important;
         align-items: center !important;
         gap: 4px !important;
-        letter-spacing: 0.3px !important;
     }
 
     .curriculo-preview .curriculo-secao h4 i {
@@ -800,7 +786,7 @@ body {
     }
 
     .curriculo-preview .curriculo-secao p {
-        font-size: 11.5px !important;
+        font-size: 11px !important;
         color: #333 !important;
         margin-bottom: 2px !important;
         line-height: 1.4 !important;
@@ -813,7 +799,7 @@ body {
     }
 
     .curriculo-preview .curriculo-secao ul li {
-        font-size: 11.5px !important;
+        font-size: 11px !important;
         color: #333 !important;
         padding: 1px 0 !important;
         padding-left: 15px !important;
@@ -830,7 +816,6 @@ body {
         font-size: 10px !important;
     }
 
-    /* TAGS */
     .curriculo-preview .tags-container-preview {
         display: flex !important;
         flex-wrap: wrap !important;
@@ -843,7 +828,7 @@ body {
         color: white !important;
         padding: 1px 10px !important;
         border-radius: 15px !important;
-        font-size: 10.5px !important;
+        font-size: 10px !important;
         font-weight: 500 !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
@@ -851,11 +836,10 @@ body {
         line-height: 1.5 !important;
     }
 
-    /* EXPERIÊNCIA E FORMAÇÃO - MAIS COMPACTAS */
     .curriculo-preview .exp-item,
     .curriculo-preview .form-item {
-        margin-bottom: 6px !important;
-        padding-bottom: 6px !important;
+        margin-bottom: 5px !important;
+        padding-bottom: 5px !important;
         border-bottom: 1px solid #f0f0f0 !important;
     }
 
@@ -868,7 +852,7 @@ body {
 
     .curriculo-preview .exp-item strong,
     .curriculo-preview .form-item strong {
-        font-size: 12px !important;
+        font-size: 11.5px !important;
         color: #1a0a2e !important;
         font-weight: 600 !important;
         display: block !important;
@@ -876,46 +860,43 @@ body {
 
     .curriculo-preview .exp-item div,
     .curriculo-preview .form-item div {
-        font-size: 11px !important;
+        font-size: 10.5px !important;
         color: #555 !important;
     }
 
     .curriculo-preview .exp-item .exp-periodo,
     .curriculo-preview .form-item .form-ano {
-        font-size: 10.5px !important;
+        font-size: 10px !important;
         color: #888 !important;
     }
 
     .curriculo-preview .exp-item p {
-        font-size: 10.5px !important;
+        font-size: 10px !important;
         margin-top: 2px !important;
         line-height: 1.3 !important;
         color: #444 !important;
     }
 
-    /* SOBRE MIM */
     .curriculo-preview .sobre-mim {
         background: #faf8ff !important;
-        padding: 8px 12px !important;
-        border-radius: 8px !important;
+        padding: 6px 10px !important;
+        border-radius: 6px !important;
         border-left: 3px solid #a855f7 !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
     }
 
     .curriculo-preview .sobre-mim p {
-        font-size: 11.5px !important;
+        font-size: 11px !important;
         line-height: 1.4 !important;
         margin: 0 !important;
     }
 
-    /* REMOVE ESPAÇOS EXTRAS NO FINAL */
     .curriculo-preview .curriculo-col-esquerda .curriculo-secao:last-child,
     .curriculo-preview .curriculo-col-direita .curriculo-secao:last-child {
         margin-bottom: 0 !important;
     }
 
-    /* GARANTE QUE SÓ UMA PÁGINA SEJA GERADA */
     .curriculo-preview {
         page-break-after: avoid !important;
         page-break-inside: avoid !important;
@@ -935,12 +916,10 @@ body {
         min-height: auto !important;
     }
 
-    /* BORDA DA MARCA D'ÁGUA - REMOVE PARA ECONOMIZAR ESPAÇO */
     .curriculo-preview::after {
         display: none !important;
     }
 
-    /* HEADER E FOOTER DO NAVEGADOR */
     @page {
         margin: 0.5cm !important;
         size: A4 portrait !important;
